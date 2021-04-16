@@ -4,6 +4,7 @@ package edu.eci.cvds.guice;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
@@ -11,15 +12,14 @@ import com.google.inject.Injector;
 
 import edu.eci.cvds.samples.services.*;
 import  edu.eci.cvds.samples.services.impl.*;
-
-
+import  edu.eci.cvds.security.*;
 import  edu.eci.cvds.sampleprj.dao.mybatis.*;
 import  edu.eci.cvds.sampleprj.dao.*;
 
 import  edu.eci.cvds.security.*;
 
 
-public class GuiceContextListener {
+public class GuiceContextListener implements ServletContextListener  {
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
@@ -34,8 +34,8 @@ public class GuiceContextListener {
             protected void initialize() {
 
                 // install(JdbcHelper.PostgreSQL);
-                // setEnvironmentId("development");
-                // setClassPathResource("mybatis-config.xml");
+                setEnvironmentId("development");
+                setClassPathResource("mybatis-config.xml");
 				
 				// //binding
                 // //login
