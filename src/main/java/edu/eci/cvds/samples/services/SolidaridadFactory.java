@@ -1,4 +1,4 @@
 package edu.eci.cvds.samples.services;
 
-public class NecesidadesServiceFactory {
+public class SolidaridadFactory {
 }
