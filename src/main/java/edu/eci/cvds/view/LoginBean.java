@@ -9,58 +9,96 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import com.google.inject.Inject;
 import javax.servlet.http.HttpSession;
+import edu.eci.cvds.security.Log;
+import edu.eci.cvds.samples.services.SolidaridadException;
 
 
-
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "login")
 @SessionScoped
 public class LoginBean extends BasePageBean{
-    
+    @Inject
+    private Log log;
     private String username;
     private String correo;
     private String contrasena;
-     public void doLogin() {
-    	// subject = SecurityUtils.getSubject();
-    	// if (getUsername()=="") {
-    	// 	setUsername(null);}
-        // UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), new Sha256Hash(getPassword()).toHex());
-        // try {
-        //     subject.login(token);
-        //     if (subject.hasRole("Administrador")) {
-        //         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioAdministrador.xhtml");
-		// 	} 
-		// 	else if (subject.hasRole("Proponente")) {
-        //         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioUsuarioProponente.xhtml");
-		// 	}
-		// 	else if (subject.hasRole("Publico")) {
-        //         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioPublico.xhtml");
-		// 	}
-		// 	else if (subject.hasRole("PersonalPMO")) {
-        //         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/InicioPMO.xhtml");
-		// 	}
-			
-        // }
-        // catch (NullPointerException e) {
-        //     System.err.println("Null Pointer");
-        // }
-		// catch (UnknownAccountException ex) {
-		// 	FacesContext context = FacesContext.getCurrentInstance();
-        //     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Usuario desconocido."));
-           
-        // } 
-		// catch (IncorrectCredentialsException ex) {
-		// 	FacesContext context = FacesContext.getCurrentInstance();
-        //     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Contraseña incorrecta."));
-        // } 
-		// catch (LockedAccountException ex) {
-		// 	FacesContext context = FacesContext.getCurrentInstance();
-        //     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Cuenta bloqueada."));
-        // } 
-		// catch (AuthenticationException | IOException ex) {
-		// 	FacesContext context = FacesContext.getCurrentInstance();
-        //     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Todos los campos son obligatorios."));
-        // } 
+    private Subject currentUser;
+
+     private FacesMessage.Severity estado;
+    private String message;
+
+     public void loginUser() {
+        try{
+            logCorrecto();
+            System.out.println("current user----------------------------");
+            
+            System.out.println(SecurityUtils.getSubject());
+            currentUser = SecurityUtils.getSubject();
+             System.out.println("fin user----------------------------");
+             
+            //  System.out.println(log.isLogged());
+             System.out.println("fin log----------------------------");
+             System.out.println( SecurityUtils.getSubject().isAuthenticated());
+             System.out.println( "fin isAuthenticated----------------------------");
+             if (log.isLogged()) {
+             System.out.println("Ya esta loggeado----------------------------");
+                 throw new SolidaridadException("Ya estas loggeado");
+             }
+             else {
+                System.out.println(" esta logeando----------------------------");
+                 log.login(correo, contrasena);
+                System.out.println(" redirigiro----------------------------");
+                redireccion();
+             }
+        }
+        catch( Exception exception){
+            message = exception.getMessage();
+            estado = FacesMessage.SEVERITY_WARN;
+            System.out.println(exception);
+             System.out.println(" error message----------------------------");
+             System.out.println(message);
+             System.out.println(" error message----------------------------");
+             System.out.println(estado);
+             System.out.println(" error xd----------------------------");
+            restartInput();
+        }
+         
     }
+    public void loginState() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "LogIn", message));
+    }
+    public void restartInput(){
+        contrasena = "";
+        correo = "";
+    }
+     public void logCorrecto(){
+        message ="Login Correcto";
+        estado = FacesMessage.SEVERITY_INFO;
+    }
+
+    public void redireccion() {
+        try {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+            session.setAttribute("correo", correo);
+            facesContext.getExternalContext().redirect("../faces/home.xhtml");
+        
+                
+        }
+        catch (Exception exception) {
+            logOut();
+        }
+    }
+    public void logOut(){
+        try{
+            log.logout();
+            restartInput();
+        }
+        catch(Exception exception){
+        }
+    }
+
     public String getCorreo() {
         return correo;
     }
