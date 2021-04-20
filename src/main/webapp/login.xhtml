@@ -47,11 +47,13 @@
 							value="#{login.contrasena}"/>		
 				<p:commandButton value="Iniciar sesión"
                                 class="btn btn-rose btn-simple btn-wd btn-lg"
-                                action="#{login.loginUser()}"
+								actionListener="#{login.loginUser}"
+                                update="frm"
+								action="#{login.loginState}"
 								/>
 								
                 
-			</h:form>
+			</h:form>"
 		</div>
     </body>
 </html>

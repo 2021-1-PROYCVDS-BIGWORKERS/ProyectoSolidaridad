@@ -13,9 +13,9 @@ public class SolidaridadException extends Exception {
         super(message);
     }
 
-    // public SolidaridadException(String message, Exception Exception) {
-    //     super(message, cause);
-    // }
+     public SolidaridadException(String message, Exception Exception) {
+         super(message, Exception);
+     }
 
     
     
