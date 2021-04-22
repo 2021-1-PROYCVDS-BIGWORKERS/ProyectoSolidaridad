@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
+    <select id="consultarOfertas" parameterType="map" resultMap="OfertaResult">
+        SELECT
+        o.idOferta AS o_idOferta,
+        o.idCategoria AS o_idCategoria,
+        o.nombre AS o_nombre,
+        o.descripcion AS o_descripcion,
+        o.fechacreacion AS o_fechacreacion,
+        o.estado AS o_estado,
+        o.fechamodificacion AS o_fechamodificacion,
+        o.nickname AS o_nickname,
+
+        FROM Ofertas AS o;
+
+
+    </select>
+    <insert id="agregarOferta" parameterType="map">
+        INSERT INTO ofertas(idOferta, idCategoria , nombre, descripcion,fechacreacion,estado,fechamodificacion,nickname)
+        VALUES (#{cli.idOferta},#{cli.idCategoria},#{cli.nombre},#{cli.descripcion},#{cli.fechacreacion},#{cli.estado},#{cli.fechamodificacion,#{cli.nickname});
+    </insert>
+
+
+<resultMap id="OfertaResult" type="Oferta" >
+<id property="idCategoria" column="o_idCategoria"/>
+<result property="nombre" column="o_nombre" />
+<result property="descripcion" column="o_descripcion" />
+<result property="fechacreacion" column="o_fechacreacion" />
+<result property="estado " column="o_estado " />
+<result property="fechamodificacion" column="o_fechamodificacion" />
+<result property="nickname" column="o_nickname" />
+</resultMap>
+</mapper>
