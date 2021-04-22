@@ -19,7 +19,6 @@ import edu.eci.cvds.samples.services.SolidaridadException;
 public class LoginBean extends BasePageBean{
     @Inject
     private Log log;
-    private String username;
     private String correo;
     private String contrasena;
     private Subject currentUser;
@@ -46,6 +45,8 @@ public class LoginBean extends BasePageBean{
              }
              else {
                 System.out.println(" esta logeando----------------------------");
+                System.out.println(correo);
+                System.out.println(contrasena);
                  log.login(correo, contrasena);
                 System.out.println(" redirigiro----------------------------");
                 redireccion();
@@ -102,20 +103,7 @@ public class LoginBean extends BasePageBean{
     public String getCorreo() {
         return correo;
     }
-    /**
-     * Method  to get user password
-     * @return String
-     */
-    public String getUsername() {
-        return username;
-    }
-    /**
-     * Method  to get user password
-     * @return String
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
+   
 
     /**
      * set user email 

@@ -11,13 +11,22 @@ import java.io.IOException;
 
 public class ShiroLog implements Log {
     @Override
-    public void login(String correo, String constraseña) throws SolidaridadException {
-       
+    public void login(String correo, String constrasena) throws SolidaridadException {
+        System.out.println( correo);
+        System.out.println( constrasena);
+        System.out.println( "correo y constraseña");
         try {
             Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(correo, new Sha256Hash(constraseña).toHex());
+            System.out.println( subject);
+            System.out.println( new Sha256Hash(constrasena));
+            System.out.println( new Sha256Hash(constrasena).toHex().toUpperCase());
+            System.out.println( new Sha256Hash(constrasena).toHex().toUpperCase().getClass());
+            UsernamePasswordToken token = new UsernamePasswordToken(correo, new Sha256Hash(constrasena).toHex(),false);
+            System.out.println( token);
             subject.getSession().setAttribute("correo", correo);
+            System.out.println(  "despues de set attribute correp");
             subject.login(token);
+            System.out.println(  " subject.login(token)");
         }
         catch (LockedAccountException lockedAccountException){
             throw new SolidaridadException("Ha habido demasiados intentos.",lockedAccountException);
@@ -29,6 +38,9 @@ public class ShiroLog implements Log {
             throw new SolidaridadException("Credenciales incorrectas.",incorrectCredentialsException);
         }
         catch (AuthenticationException authenticationException){
+            System.out.println( "authentication exeption");
+            System.out.println( authenticationException);
+            System.out.println( authenticationException.getMessage());
             throw new SolidaridadException("Error en la autenticacion.",authenticationException);
         }
         catch( Exception exception){
