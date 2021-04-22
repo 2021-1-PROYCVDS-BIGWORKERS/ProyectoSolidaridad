@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper">
+
+    <select id="consultarCategorias" parameterType="map" resultMap="CategoriaResult">
+        select * from categorias;
+    </select>
+    <insert parameterType="map" id="insertarCategoria">
+        insert into categorias(idcategoria,nombre,descripcion,fechacreacion,estado,fechamodificacion) values
+        (#{categoria.idCategoria},#{categoria.nombre},#{categoria.descripcion},#{categoria.fechaDeCreacion},
+         #{categoria.estado},#{categoria.fechaDeModificacion})
+    </insert>
+    <update id="updateNombre" parameterType="map">
+        update categorias set nombre=#{nombre} where nombre=#{categoria}
+    </update>
+    <update id="updateDescripcion" parameterType="map">
+        update categorias set descripcion=#{descripcion} where nombre=#{categoria}
+    </update>
+    <update id="updateEstado" parameterType="map">
+        update categorias set estado=#{estado} where nombre=#{categoria}
+    </update>
+    <resultMap id="CategoriaResult" type="Categoria">
+        <id property="idCategoria" column="idcategoria"/>
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechaDeCreacion" column="fechacreacion"/>
+        <result property="estado" column="estado"/>
+        <result property="fechaDeModificacion" column="fechamodificacion"/>
+    </resultMap>
+</mapper>
