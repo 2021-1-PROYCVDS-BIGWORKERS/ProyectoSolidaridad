@@ -95,8 +95,8 @@ html {
 	padding: 70px 30px;
 	border-color: #fff;
 	border-radius: 10px;
-	border-top: 3px solid #ea4756;
-	border-bottom: 3px solid #ea4756;
+	border-top: 3px solid #9c0816;
+	border-bottom: 3px solid #9c0816;
 }
 
 .login-box .avatar {
@@ -119,17 +119,17 @@ html {
 	border: none;
 	outline: none;
 	height: 40px;
-	font-size: 16px;
+	font-size: 20px;
 	text-shadow: none;
 	border-bottom: 2px solid #727070;
 }
 
 .login-box .form-control:focus{
-	border-bottom: 3px solid #ea4756;
+	border-bottom: 3px solid #9c0816;
     top: -20px;
   left: 0;
-  color: #ea4756;
-  font-size: 12px;
+  color: #9c0816;
+  font-size: 16px;
 }
 
 .login-box button{
@@ -140,7 +140,7 @@ html {
 	height: 32px;
 	background: #F6F7F9;
 	color: #748194;
-	font-size: 16px;
+	font-size: 20px;
 	border-radius: 5px;
 	margin-top: 18px;
 	width: 100%;
@@ -149,12 +149,12 @@ html {
 }
 
 .login-box button:hover{
-	background-color: #ea4756;
-	color: #f37885;
-	border: 1px solid #ea4756;
+	background-color: #9c0816;
+	color: #6c0c15;
+	border: 1px solid #9c0816;
 }
 
 .login-box .control-label{
-	color: #ea4756;
+	color: #9c0816;
 	font-family: Impact;
 }
