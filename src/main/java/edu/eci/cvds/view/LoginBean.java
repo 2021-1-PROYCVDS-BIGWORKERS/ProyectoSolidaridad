@@ -28,26 +28,20 @@ public class LoginBean extends BasePageBean{
 
      public void loginUser() {
         try{
-            logCorrecto();
-            System.out.println("current user----------------------------");
-            
-            System.out.println(SecurityUtils.getSubject());
             currentUser = SecurityUtils.getSubject();
-             System.out.println("fin user----------------------------");
+            logCorrecto();
+            
+            currentUser = SecurityUtils.getSubject();
              
-            //  System.out.println(log.isLogged());
-             System.out.println("fin log----------------------------");
              System.out.println( SecurityUtils.getSubject().isAuthenticated());
-             System.out.println( "fin isAuthenticated----------------------------");
+             
              if (log.isLogged()) {
              System.out.println("Ya esta loggeado----------------------------");
                  throw new SolidaridadException("Ya estas loggeado");
              }
              else {
                 System.out.println(" esta logeando----------------------------");
-                System.out.println(correo);
-                System.out.println(contrasena);
-                 log.login(correo, contrasena);
+                log.login(correo, contrasena);
                 System.out.println(" redirigiro----------------------------");
                 redireccion();
              }
@@ -83,11 +77,19 @@ public class LoginBean extends BasePageBean{
             
             HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
             session.setAttribute("correo", correo);
-            facesContext.getExternalContext().redirect("../faces/home.xhtml");
+           
+            if(currentUser.hasRole("Administrador")){
+                System.out.println("finaliza redireccion administrador");
+                facesContext.getExternalContext().redirect("/faces/homeAdministrador.xhtml");
+            }
+            
+            System.out.println("finaliza redireccion");
         
                 
         }
         catch (Exception exception) {
+            System.out.println("exepcion redireccion");
+            System.out.println(exception.getMessage());
             logOut();
         }
     }

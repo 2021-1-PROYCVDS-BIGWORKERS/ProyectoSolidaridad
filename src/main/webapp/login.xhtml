@@ -17,43 +17,35 @@
     </h:head>
 
     <body>
-		<!-- <div class="login-box">
-			<h2>Login</h2>
-			<form>
-			  <div class="user-box">
-				<input type="text" name="" required="">
-				<label>Username</label>
-			  </div>
-			  <div class="user-box">
-				<input type="password" name="" required="">
-				<label>Password</label>
-			  </div>
-			  <a href="#">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				Submit
-			  </a>
-			</form>
-		  </div> -->
-        <div class="login-box">
-			<h:form id="frm">
-				<label class="control-label">Usuario</label>
-				<p:inputText id="correo" value="#{login.correo}" type="text"
-							class="form-control"/>
-				<label class="control-label">Contraseña</label>
-				<p:inputText id="noCopy" type="password" class="form-control"
-							value="#{login.contrasena}"/>		
-				<p:commandButton value="Iniciar sesión"
-                                class="btn btn-rose btn-simple btn-wd btn-lg"
-								actionListener="#{login.loginUser}"
-                                update="frm"
-								action="#{login.loginState}"
-								/>
-								
-                
-			</h:form>"
+		<div class="container">
+			<div class="left">
+
+			</div>
+				<div class="rigth">
+					<div class="login-box">
+				
+						<h:form id="frm">
+							<label class="control-label">Usuario</label>
+							<p:inputText id="correo" value="#{login.correo}" type="text"
+										class="form-control"/>
+							<label class="control-label">Contraseña</label>
+							<p:inputText id="noCopy" type="password" class="form-control"
+										value="#{login.contrasena}"/>		
+							<p:commandButton value="Iniciar sesión"
+											class="btn btn-rose btn-simple btn-wd btn-lg"
+											actionListener="#{login.loginUser}"
+											update="frm"
+											action="#{login.loginState}"
+											/>
+											
+							
+						</h:form>
+					</div>
+				</div>
+
 		</div>
+		
+        
+		
     </body>
 </html>
