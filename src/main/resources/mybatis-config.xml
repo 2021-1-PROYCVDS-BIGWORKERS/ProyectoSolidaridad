@@ -6,11 +6,13 @@
 <configuration>
 	<properties resource="config.properties">
 	</properties>
-	<!-- <typeAliases>
+
 		<typeAlias alias="Categoria" type="edu.eci.cvds.samples.entities.Categoria"/>
 		<typeAlias alias="Necesidad" type="edu.eci.cvds.samples.entities.Necesidad"/>
-		<typeAlias alias="Oferta" type="edu.eci.cvds.samples.entities.Oferta"/>
 		<typeAlias alias="Respuesta" type="edu.eci.cvds.samples.entities.Respuesta"/>
+			<!-- <typeAliases>
+		<typeAlias alias="Oferta" type="edu.eci.cvds.samples.entities.Oferta"/>
+		
 		<typeAlias alias="Rol" type="edu.eci.cvds.samples.entities.Rol"/>
 		
 	</typeAliases> -->
@@ -25,10 +27,12 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<!-- <mappers>
+	
 		<mapper resource="mappers/CategoriaMapper.xml"/>
 		<mapper resource="mappers/NecesidadMapper.xml"/>
-        <mapper resource="mappers/OfertaMapper.xml"/>
 		<mapper resource="mappers/RespuestaMapper.xml"/>
+		<!-- <mappers>
+        <mapper resource="mappers/OfertaMapper.xml"/>
+		
 	</mappers> -->
 </configuration>
