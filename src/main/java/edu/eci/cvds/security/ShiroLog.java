@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class ShiroLog implements Log {
     @Override
-    public void login(String correo, String constraseña) throws SolidaridadException {
-       
+    public void login(String correo, String constrasena) throws SolidaridadException {
+     
         try {
             Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(correo, new Sha256Hash(constraseña).toHex());
+            UsernamePasswordToken token = new UsernamePasswordToken(correo, new Sha256Hash(constrasena).toHex(),false);
             subject.getSession().setAttribute("correo", correo);
             subject.login(token);
         }
@@ -40,7 +40,7 @@ public class ShiroLog implements Log {
     public void logout()throws SolidaridadException {
         SecurityUtils.getSubject().logout();
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/login.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/login.xhtml");
         } catch (IOException ioException) {
             ioException.printStackTrace();
             throw new SolidaridadException("Woops, ha ocurrido un error",ioException);
@@ -49,8 +49,6 @@ public class ShiroLog implements Log {
 
     @Override
     public boolean isLogged() {
-        System.out.println( "is authenticated");
-        System.out.println( SecurityUtils.getSubject().isAuthenticated());
         return SecurityUtils.getSubject().isAuthenticated();
     }
 
