@@ -33,12 +33,23 @@ public class CategoriasServiceImpl implements CategoriasService {
     }
 
     @Override
-    public void actualizarCategoria(String categoriaNombre,String nombre, String descripcion, String estado) throws SolidaridadException {
+    public void actualizarCategoria(String categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException {
         try{
-            categoriasDAO.update(categoriaNombre,nombre,descripcion,estado);
+            Categoria categoria = consultarCategoria(categoriaNombre);
+            categoriasDAO.update(categoria,nombre,descripcion,estado);
         }catch (Exception e){
             e.printStackTrace();
             throw new SolidaridadException("No se puede actualizar la categoria "+nombre);
+        }
+    }
+
+    @Override
+    public Categoria consultarCategoria(String nombre) throws SolidaridadException {
+        try{
+            return categoriasDAO.load(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La categoria "+nombre+" no existe");
         }
     }
 

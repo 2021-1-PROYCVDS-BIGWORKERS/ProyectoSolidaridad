@@ -31,14 +31,33 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
     }
 
     @Override
-    public void update(String categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException {
+    public void update(Categoria categoria, String nombre, String descripcion, String estado) throws SolidaridadException {
         try{
-            if(nombre!=null) { categoriaMapper.updateNombre(categoriaNombre,nombre); }
-            if(descripcion!=null) { categoriaMapper.updateDescripcion(categoriaNombre,descripcion); }
-            if(estado!=null) { categoriaMapper.updateEstado(categoriaNombre,estado); }
+            String aNombre = categoria.getNombre();
+            if (nombre != null){
+                categoria.setNombre(nombre);
+            }
+            if (descripcion != null){
+                categoria.setDescripcion(descripcion);
+            }
+            if (descripcion != null){
+                categoria.setEstado(estado);
+            }
+            categoriaMapper.update(categoria,aNombre);
+
         }catch (Exception e){
             e.printStackTrace();
             throw new SolidaridadException("Error al actualizar la categoria "+nombre);
+        }
+    }
+
+    @Override
+    public Categoria load(String nombre) throws SolidaridadException {
+        try{
+            return categoriaMapper.consultarCategoria(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La categoria consultada no existe");
         }
     }
 }

@@ -8,19 +8,17 @@
     <select id="consultarCategorias" parameterType="map" resultMap="CategoriaResult">
         select * from categorias;
     </select>
+    <select id="consultarCategoria" parameterType="map" resultMap="CategoriaResult">
+        select * from categorias where nombre=#{nombre};
+    </select>
     <insert parameterType="map" id="insertarCategoria">
         insert into categorias(idcategoria,nombre,descripcion,fechacreacion,estado,fechamodificacion) values
         (#{categoria.idCategoria},#{categoria.nombre},#{categoria.descripcion},#{categoria.fechaDeCreacion},
          #{categoria.estado},#{categoria.fechaDeModificacion})
     </insert>
-    <update id="updateNombre" parameterType="map">
-        update categorias set nombre=#{nombre} where nombre=#{categoria}
-    </update>
-    <update id="updateDescripcion" parameterType="map">
-        update categorias set descripcion=#{descripcion} where nombre=#{categoria}
-    </update>
-    <update id="updateEstado" parameterType="map">
-        update categorias set estado=#{estado} where nombre=#{categoria}
+    <update id="update" parameterType="map">
+        update categorias set nombre=#{categoria.nombre}, descripcion=#{categoria.descripcion}, estado=#{categoria.estado},
+        fechamodificacion=CURRENT_DATE where nombre=#{aNombre}
     </update>
     <resultMap id="CategoriaResult" type="Categoria">
         <id property="idCategoria" column="idcategoria"/>

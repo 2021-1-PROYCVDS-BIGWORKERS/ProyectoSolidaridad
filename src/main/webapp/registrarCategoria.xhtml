@@ -9,7 +9,7 @@
 </h:head>
 
 <h:body>
-    <h:form id="Alquiler_Form">
+    <h:form id="Categoria_form">
         <p:dataTable var="categoria" value="#{CategoriasBean.consultarCategorias()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="10" selectionMode="single" id="idCategoria"
@@ -34,13 +34,13 @@
                 <h:outputText value="#{categoria.getFechaDeModificacion()}"/>
             </p:column>
         </p:dataTable>
-        <h:panelGrid id="grid" cellpadding="5" columns="2">
+        <h:panelGrid id="grid" cellpadding="2" columns="2">
 
             <p:outputLabel for="nombre" value="Nombre Categoria: "/>
-            <p:inputText class="input" id="nombre" type="String" binding="#{nombre}"/>
+            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
 
             <p:outputLabel for="descripcion" value="Descripcion Categoria: "/>
-            <p:inputText class="input" id="descripcion" type="String" binding="#{descripcion}"/>
+            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
         </h:panelGrid>
         <p:commandButton actionListener="#{CategoriasBean.registrarCategoria(nombre.value,descripcion.value)}" value="Registrar Categoria"/>
     </h:form>

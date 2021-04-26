@@ -10,5 +10,7 @@ public interface CategoriasDAO {
 
     List<Categoria> load() throws SolidaridadException;
 
-    void update(String categoriaNombre,String nombre, String descripcion, String estado) throws SolidaridadException;
+    void update(Categoria categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException;
+
+    Categoria load(String nombre) throws SolidaridadException;
 }

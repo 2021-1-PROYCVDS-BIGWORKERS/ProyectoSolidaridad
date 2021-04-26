@@ -23,6 +23,15 @@ public class CategoriasBean extends BasePageBean{
         }
     }
 
+    public Categoria consultarCategoria(String nombre) throws SolidaridadException{
+        try{
+            return categoriasService.consultarCategoria(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La categoria no existe");
+        }
+    }
+
     public List<Categoria> consultarCategorias() throws SolidaridadException{
         try{
             return categoriasService.consultarCategorias();

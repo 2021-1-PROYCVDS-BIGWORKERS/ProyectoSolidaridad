@@ -16,6 +16,6 @@ public class MyBatisClient {
                 "Estudiar Calculo diferencial"));*/
         System.out.println("--------------------------------------------");
         System.out.println(categoriasService.consultarCategorias());
-        categoriasService.actualizarCategoria("Calculo",null,"Hola","Resuelta");
+        categoriasService.actualizarCategoria("Greg",null,null,"En proceso");
     }
 }
