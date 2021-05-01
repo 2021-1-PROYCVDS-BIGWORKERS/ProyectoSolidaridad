@@ -1,0 +1,2 @@
+[![novenix](https://circleci.com/gh/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/tree/master.svg?style=svg)](https://circleci.com/gh/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/tree/master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/de982a7ac3bf42d8a96239b0f318da50)](https://www.codacy.com/gh/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad&amp;utm_campaign=Badge_Grade)
