@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch MyBatisClient",
+            "request": "launch",
+            "mainClass": "edu.eci.cvds.samples.services.client.MyBatisClient",
+            "projectName": "MyBATIS-Guice-DAO-VideorentalServicesLayer"
+        },
+        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

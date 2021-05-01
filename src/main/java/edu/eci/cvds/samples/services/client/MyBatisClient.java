@@ -1,7 +1,8 @@
 package edu.eci.cvds.samples.services.client;
 
-import edu.eci.cvds.samples.entities.Categoria;
-import edu.eci.cvds.samples.services.CategoriasService;
+
+import edu.eci.cvds.samples.entities.*;
+import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
 import edu.eci.cvds.samples.services.SolidaridadFactory;
 
@@ -17,5 +18,15 @@ public class MyBatisClient {
         System.out.println("--------------------------------------------");
         System.out.println(categoriasService.consultarCategorias());
         categoriasService.actualizarCategoria("Greg",null,null,"En proceso");
+        NecesidadesService necesidadesService = SolidaridadFactory.getInstance().getNecesidadesService();
+        //RespuestasService respuestasService = SolidaridadFactory.getInstance().getRespuestasService();
+        System.out.println("--------------------------------------------");
+        //necesidadesService.actualizarNecesidad("Flint", "Cerrada");
+        //respuestasService.registrarRespuesta(new Respuesta("prueba","funciona", "2", null, "2"));
+        necesidadesService.registrarNecesidad(new Necesidad("PaPa", "Falta de de PaPa","1" ,"Poca", "1"));
+        System.out.println("--------------------------------------------");
+        //System.out.println(necesidadesService.consultarNecesidades()) ;
+        //System.out.println(respuestasService.consultarRespuesta("Boy")) ;
+        
     }
 }
