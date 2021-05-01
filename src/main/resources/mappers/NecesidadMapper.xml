@@ -4,21 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
-
-    <select id="consultarNecesidad" parameterType="map" resultMap="NecesidadResult">
-        select * from necesidades;
-    </select>
     <insert parameterType="map" id="insertarNecesidad">
         insert into necesidades(idnecesidad,idcategoria,nombre,descripcion,urgencia,fechacreacion,estado,fechamodificacion,nickname) values
-        (#{necesidad.idnecesidad},#{necesidad.idcategoria},#{necesidad.nombre},#{necesidad.descripcion},#{necesidad.urgencia},#{necesidad.fechaDeCreacion},
+        (#{necesidad.idNecesidad},#{necesidad.idCategoria},#{necesidad.nombre},#{necesidad.descripcion},#{necesidad.urgencia},#{necesidad.fechaDeCreacion},
          #{necesidad.estado},#{necesidad.fechaDeModificacion},#{necesidad.nickname})
     </insert>
+    
+    <select id="consultarNecesidades" parameterType="map" resultMap="NecesidadResult">
+        select * from necesidades;
+    </select>
+    <select id="consultarNecesidad" parameterType="map" resultMap="NecesidadResult">
+        select * from necesidades where nombre=#{nombre};
+    </select>
+
     <update id="updateEstado" parameterType="map">
-        update necesidades set estado=#{estado} where nombre=#{necesidad}
+        update necesidades set estado=#{estado} ,  fechamodificacion=CURRENT_DATE where nombre=#{necesidadNombre}
     </update>
+    
     <resultMap id="NecesidadResult" type="Necesidad">
-        <id property="idnecesidad" column="idnecesidad"/>
-        <result property="idcategoria" column="idcategoria"/>
+        <id property="idNecesidad" column="idnecesidad"/>
+        <result property="idCategoria" column="idcategoria"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
         <result property="urgencia" column="urgencia"/>

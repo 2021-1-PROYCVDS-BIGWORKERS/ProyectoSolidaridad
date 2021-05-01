@@ -42,8 +42,15 @@ public class NecesidadesServiceImpl implements NecesidadesService {
         }
     }
 
-
-        
-    }
+    @Override
+    public Necesidad consultarNecesidad(String nombre) throws SolidaridadException {
+        try{
+            return NecesidadesDAO.load(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La necesidad "+nombre+" no existe");
+        }
+    }   
+}
 
 

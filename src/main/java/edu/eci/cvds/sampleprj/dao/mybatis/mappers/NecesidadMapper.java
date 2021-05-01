@@ -9,6 +9,10 @@ public interface NecesidadMapper {
     void insertarNecesidad(@Param("necesidad") Necesidad necesidad);
 
     List<Necesidad> consultarNecesidades();
+    
+    Necesidad consultarNecesidad(@Param("nombre") String nombre);
 
-    void updateEstado(@Param("necesidad")String necesidadNombre,@Param("estado") String estado);
+    void updateEstado(@Param("necesidadNombre")String necesidadNombre,@Param("estado") String estado);
+    
+
 }

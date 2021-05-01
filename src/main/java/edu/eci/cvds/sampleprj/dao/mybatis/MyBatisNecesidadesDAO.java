@@ -20,7 +20,7 @@ public class MyBatisNecesidadesDAO implements NecesidadesDAO {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public List<Necesidad> load() throws SolidaridadException  {
         try{
@@ -33,10 +33,20 @@ public class MyBatisNecesidadesDAO implements NecesidadesDAO {
     @Override
     public void update( String nombreNecesidad, String estado) throws SolidaridadException {
         try{
-            if(estado!=null) { NecesidadMapper.updateEstado(nombreNecesidad, estado); }
+          if(estado!=null) NecesidadMapper.updateEstado(nombreNecesidad, estado); 
         }catch (Exception e){
             e.printStackTrace();
             throw new SolidaridadException("Error al actualizar el estado de la Necesidad "+estado);
+        }
+    }
+
+    @Override
+    public Necesidad load(String nombre) throws SolidaridadException {
+        try{
+            return NecesidadMapper.consultarNecesidad(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La necesidad consultada no existe");
         }
     }
 

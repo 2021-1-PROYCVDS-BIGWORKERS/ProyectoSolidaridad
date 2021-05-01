@@ -9,7 +9,7 @@ import edu.eci.cvds.samples.services.SolidaridadException;
 import java.sql.Date;
 import java.util.List;
 
-@ManagedBean(name = "NecesidadsBean")
+@ManagedBean(name = "NecesidadesBean")
 @ApplicationScoped
 public class NecesidadesBean extends BasePageBean{
     @Inject
@@ -36,6 +36,14 @@ public class NecesidadesBean extends BasePageBean{
             NecesidadesService.actualizarNecesidad(nombreNecesidad,estado);
         }catch (Exception e){
             throw new SolidaridadException("Error al actualizar el estado de la Necesidad "+estado);
+        }
+    }
+    public Necesidad consultarNecesidad(String nombre) throws SolidaridadException{
+        try{
+            return NecesidadesService.consultarNecesidad(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La necesidad no existe");
         }
     }
 
