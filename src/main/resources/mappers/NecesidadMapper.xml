@@ -9,7 +9,12 @@
         (#{necesidad.idNecesidad},#{necesidad.idCategoria},#{necesidad.nombre},#{necesidad.descripcion},#{necesidad.urgencia},#{necesidad.fechaDeCreacion},
          #{necesidad.estado},#{necesidad.fechaDeModificacion},#{necesidad.nickname})
     </insert>
+      <select id="consultarNumeroNecesidadPorEstado" parameterType="map" resultMap="NecesidadResult">
+    select * from necesidades 
+    WHERE #{estado} = necesidades.estado;
     
+
+    </select>
     <select id="consultarNecesidades" parameterType="map" resultMap="NecesidadResult">
         select * from necesidades;
     </select>

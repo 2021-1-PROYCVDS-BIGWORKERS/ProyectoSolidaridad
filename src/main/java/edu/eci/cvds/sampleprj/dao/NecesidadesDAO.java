@@ -14,4 +14,5 @@ public interface NecesidadesDAO {
     void update(String nombreNecesidad,String estado) throws SolidaridadException;
 
     Necesidad load(String nombre) throws SolidaridadException;
+    public List<Necesidad> consultarNumeroNecesidadPorEstado( String estado) throws SolidaridadException;
 }
