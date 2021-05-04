@@ -17,7 +17,18 @@
         
     </h:head>
 
-    <body>
-        <div>Pagina Home redireccion</div>
-    </body>
+    <h:body>
+    <div>
+        <h1>Estoy en usuario</h1>
+        <p:separator />
+        <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <p:commandButton actionListener="#{login.logOut}" value="salir" >
+            </p:commandButton>
+            
+        </h:form>
+    </div>
+</h:body>
 </html>

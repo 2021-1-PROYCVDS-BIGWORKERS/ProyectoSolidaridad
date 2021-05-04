@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title> Registrar Respuestas </title>
+</h:head>
+
+<h:body>
+    <h:form id="Respuesta_form">
+        <p:dataTable var="respuesta" value="#{RespuestasBean.consultarRespuestas()}"
+                     paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="10"  id="idRespuesta"
+                     rowKey="#{respuesta.getIdRespuesta()}">
+            <f:facet name="header"> Respuestas </f:facet>
+
+            <p:column headerText="idRespuesta">
+                <h:outputText value="#{respuesta.getIdRespuesta()}"/>
+            </p:column>
+
+            <p:column headerText="idNecesidad">
+                <h:outputText value="#{respuesta.getIdNecesidad()}"/>
+            </p:column>
+
+            <p:column headerText="idOferta">
+                <h:outputText value="#{respuesta.getIdOferta()}"/>
+            </p:column>
+
+            <p:column headerText="Nombre">
+                <h:outputText value="#{respuesta.getNombre()}"/>
+            </p:column>
+
+            <p:column headerText="Comentarios">
+                <h:outputText value="#{respuesta.getComentarios()}"/>
+            </p:column>
+
+            <p:column headerText="Fecha de Creacion">
+                <h:outputText value="#{respuesta.getFechaDeCreacion()}"/>
+            </p:column>
+
+            <p:column headerText="Fecha de Modificacion">
+                <h:outputText value="#{respuesta.getFechaDeModificacion()}"/>
+            </p:column>
+
+            <p:column headerText="Usuario">
+                <h:outputText value="#{respuesta.getNickname()}"/>
+            </p:column>
+
+        </p:dataTable>
+
+        <h:panelGrid id="grid" cellpadding="5" columns="5">
+
+            <p:outputLabel for="nombre" value="Nombre Respuesta: "/>
+            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
+
+            <p:outputLabel for="comentarios" value="comentarios: "/>
+            <p:inputText id="comentarios" type="String" binding="#{comentarios}"/>
+
+            <p:outputLabel for="idnecesidad" value="idnecesidad relacionada a la respuesta: "/>
+            <p:inputText id="idnecesidad" type="String" binding="#{idnecesidad}"/>
+
+            <p:outputLabel for="idoferta" value="idoferta relacionada a la respuesta: "/>
+            <p:inputText id="idoferta" type="String" binding="#{idoferta}"/>
+
+            <p:outputLabel for="nickname" value="nickname: "/>
+            <p:inputText id="nickname" type="String" binding="#{nickname}"/>
+
+        </h:panelGrid>
+        <p:commandButton actionListener="#{RespuestasBean.registrarRespuesta(nombre.value,comentarios.value,idnecesidad.value,idoferta.value,nickname.value)}" value="Registrar Necesidad"/>
+        
+    </h:form>
+</h:body>
+</html>
