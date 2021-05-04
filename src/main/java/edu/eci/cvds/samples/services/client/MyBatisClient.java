@@ -8,8 +8,10 @@ import edu.eci.cvds.samples.services.SolidaridadFactory;
 public class MyBatisClient {
         public static void main(String[] args) throws SolidaridadException {
             OfertasService ofertasService = SolidaridadFactory.getInstance().getOfertasService();
-            ofertasService.registrarOferta(new Oferta("1", "Categoria1", "JAHDSJJ","holaaa"));
-
-
+            System.out.println("--------------------------------------------");
+            //ofertasService.registrarOferta(new Oferta("1", "Categoria1", "JAHDSJJ","Activa","4"));
+            //ofertasService.actualizarOferta("Yoko", "Activa");
+            //System.out.println(ofertasService.consultarOfertas()) ;
+            System.out.println(ofertasService.consultarOferta("Yoko")) ;
         }
     }

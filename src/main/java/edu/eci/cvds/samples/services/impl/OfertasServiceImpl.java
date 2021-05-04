@@ -23,12 +23,32 @@ public class OfertasServiceImpl implements OfertasService {
     }
 
     @Override
-    public List<Oferta> consultarOferta() throws SolidaridadException {
-        try{
+    public List<Oferta> consultarOfertas() throws SolidaridadException {
+        try {
             return ofertasDAO.load();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw new SolidaridadException("No se encuentran clientes");
         }
     }
-}
+    @Override
+    public void actualizarOferta(String nombreOferta, String estado) throws SolidaridadException {
+        try{
+            ofertasDAO.update(nombreOferta,estado);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("No se puede actualizar el estado a "+estado);
+        }
+    }
+
+    @Override
+    public Oferta consultarOferta(String nombre) throws SolidaridadException {
+        try{
+            return ofertasDAO.load(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La oferta "+nombre+" no existe");
+            }
+        }
+    }
+

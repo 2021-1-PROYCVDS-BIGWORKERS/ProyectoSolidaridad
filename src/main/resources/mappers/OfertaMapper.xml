@@ -5,33 +5,32 @@
 
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
     <select id="consultarOfertas" parameterType="map" resultMap="OfertaResult">
-        SELECT
-        o.idOferta AS o_idOferta,
-        o.idCategoria AS o_idCategoria,
-        o.nombre AS o_nombre,
-        o.descripcion AS o_descripcion,
-        o.fechacreacion AS o_fechacreacion,
-        o.estado AS o_estado,
-        o.fechamodificacion AS o_fechamodificacion,
-        o.nickname AS o_nickname,
-
-        FROM Ofertas AS o;
-
-
+        select * from ofertas;
     </select>
-    <insert id="agregarOferta" parameterType="map">
-        INSERT INTO ofertas(idOferta, idCategoria , nombre, descripcion,fechacreacion,estado,fechamodificacion,nickname)
-        VALUES (#{cli.idOferta},#{cli.idCategoria},#{cli.nombre},#{cli.descripcion},#{cli.fechacreacion},#{cli.estado},#{cli.fechamodificacion,#{cli.nickname});
+
+    <insert parameterType="map" id="insertarOferta">
+        insert into ofertas(idoferta,idcategoria,nombre,descripcion,fechacreacion,estado,fechamodificacion,nickname) values
+        (#{oferta.idOferta},#{oferta.idCategoria},#{oferta.nombre},#{oferta.descripcion},#{oferta.fechacreacion},
+        #{oferta.estado},#{oferta.fechamodificacion},#{oferta.nickname})
     </insert>
 
+    <select id="consultarOferta" parameterType="map" resultMap="OfertaResult">
+        select * from ofertas where nombre=#{nombre};
+    </select>
 
-<resultMap id="OfertaResult" type="Oferta" >
-<id property="idCategoria" column="o_idCategoria"/>
-<result property="nombre" column="o_nombre" />
-<result property="descripcion" column="o_descripcion" />
-<result property="fechacreacion" column="o_fechacreacion" />
-<result property="estado " column="o_estado " />
-<result property="fechamodificacion" column="o_fechamodificacion" />
-<result property="nickname" column="o_nickname" />
-</resultMap>
+    <update id="updateEstado" parameterType="map">
+        update ofertas set estado=#{estado} ,fechamodificacion=CURRENT_DATE where nombre=#{ofertaNombre}
+    </update>
+
+
+    <resultMap id="OfertaResult" type="Oferta" >
+        <id property="idOferta" column="idoferta"/>
+            <result property="idCategoria" column="idcategoria"/>
+            <result property="nombre" column="nombre" />
+            <result property="descripcion" column="descripcion" />
+            <result property="fechacreacion" column="fechacreacion" />
+            <result property="estado " column="estado " />
+            <result property="fechamodificacion" column="fechamodificacion" />
+            <result property="nickname" column="nickname" />
+    </resultMap>
 </mapper>

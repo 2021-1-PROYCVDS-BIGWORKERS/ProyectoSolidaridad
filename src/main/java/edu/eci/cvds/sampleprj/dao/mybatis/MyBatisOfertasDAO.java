@@ -30,5 +30,26 @@ public class MyBatisOfertasDAO implements OfertasDAO {
             throw new SolidaridadException("Error al consultar los clientes MyBatisOfertas ", e);
         }
     }
+
+    @Override
+    public void update( String nombreOferta, String estado) throws SolidaridadException {
+        try{
+            if(estado!=null) ofertaMapper.updateEstado(nombreOferta, estado);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("Error al actualizar el estado de la Necesidad "+estado);
+        }
+    }
+
+
+    @Override
+    public Oferta load(String nombre) throws SolidaridadException {
+        try{
+            return ofertaMapper.consultarOferta(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La oferta consultada no existe");
+        }
+    }
 }
 

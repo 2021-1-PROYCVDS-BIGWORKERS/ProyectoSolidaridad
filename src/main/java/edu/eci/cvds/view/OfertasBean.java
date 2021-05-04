@@ -16,19 +16,36 @@ public class OfertasBean extends BasePageBean{
     @Inject
     private OfertasService ofertasService;
 
-    public void registrarOferta(String idCategoria, String nombre, String descripcion, String nickname) {
+    public void registrarOferta(String idCategoria, String nombre, String descripcion,String estado,String nickname) {
         try {
-            ofertasService.registrarOferta(new Oferta(idCategoria,nombre, descripcion,nickname));
+            ofertasService.registrarOferta(new Oferta(idCategoria,nombre, descripcion,estado,nickname));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public Oferta consultarOferta(String nombre) throws SolidaridadException{
+        try{
+            return ofertasService.consultarOferta(nombre);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new SolidaridadException("La oferta no existe");
+        }
+    }
+
+    public void actualizarOferta(String nombreOferta,String estado) throws SolidaridadException {
+        try{
+            ofertasService.actualizarOferta(nombreOferta,estado);
+        }catch (Exception e){
+            throw new SolidaridadException("Error al actualizar el estado de la Oferta "+estado);
+        }
+    }
+
     public List<Oferta> consultarOfertas() throws SolidaridadException{
         try{
-            return ofertasService.consultarOferta();
+            return ofertasService.consultarOfertas();
         }catch (Exception e){
-            throw new SolidaridadException("Error al consultar las ofertas en OfertasBean");
+            throw new SolidaridadException("Error al consultar las ofertas en CategoriasBean");
         }
     }
 

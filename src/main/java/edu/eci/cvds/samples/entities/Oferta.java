@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.UUID;
 
 
-public class Oferta implements Serializable{
+public class Oferta {
 
     private String idOferta;
     private String idCategoria;
@@ -17,7 +17,7 @@ public class Oferta implements Serializable{
     private Date fechamodificacion;
     private String nickname;
 
-   public Oferta(String idCategoria,String nombre,String descripcion,String nickname){
+   public Oferta(String idCategoria,String nombre,String descripcion,String estado, String nickname){
 
        this.idOferta=UUID.randomUUID().toString();
        this.idCategoria=idCategoria;
@@ -29,56 +29,56 @@ public class Oferta implements Serializable{
        this.nickname= nickname;
    }
 
-    public Oferta(String nombre, String descripcion) {
+    public Oferta(String idOferta, String idCategoria,String nombre,String descripcion, Date fechacreacion, String estado , Date fechamodificacion,String nickname) {
     }
 
     public String getIdOferta() {
-        return idOferta;
+       return idOferta;
     }
 
     public void setIdOferta(String idOferta) {
-        this.idOferta = idOferta;
+       this.idOferta = idOferta;
     }
 
     public String getIdCategoria() {
-        return this.idCategoria;
+       return this.idCategoria;
     }
 
     public void setIdCategoria(String idCategoria) {
-        this.idCategoria = idCategoria;
+       this.idCategoria = idCategoria;
     }
 
 
     public String getNombre() {
-        return this.nombre;
+       return this.nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+       this.nombre = nombre;
     }
 
     public String getDescripcion() {
-        return this.descripcion;
+       return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+       this.descripcion = descripcion;
     }
 
     public Date getFechacreacion() {
-        return this.fechacreacion;
+       return this.fechacreacion;
     }
 
     public void setFechacreacion(Date fechacreacion) {
-        this.fechacreacion = fechacreacion;
+       this.fechacreacion = fechacreacion;
     }
 
     public String getEstado() {
-        return this.estado;
+       return this.estado;
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+       this.estado = estado;
     }
 
     public Date getFechamodificacion() {
@@ -86,19 +86,20 @@ public class Oferta implements Serializable{
     }
 
     public void setFechamodificacion(Date fechamodificacion) {
-        this.fechamodificacion = fechamodificacion;
+       this.fechamodificacion = fechamodificacion;
     }
 
     public String getNickname() {
-        return this.nickname;
+       return this.nickname;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+       this.nickname = nickname;
     }
+
     @Override
     public String toString(){
-        return "Oferta{" + "idOferta="+idOferta+", " + "nombre="+nombre+", " + "descripcion="+descripcion+"" + ", estado="+estado+"}\n";
+        return "Oferta{" + "idOferta="+idOferta+"," + "idCategoria= "+idCategoria+", " + "nombre="+nombre+", " + "descripcion="+descripcion+"" + ", estado="+estado+"}\n";
     }
 }
 
