@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title> Registrar Ofertas </title>
+</h:head>
+<h:body>
+    <h:form id="Oferta_form">
+        <p:dataTable var="oferta" value="#{OfertasBean.consultarOfertas()}"
+                     paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="10" selectionMode="single" id="idOferta"
+                     rowKey="#{oferta.getIdOferta()}">
+            <f:facet name="header"> Ofertas </f:facet>
+
+            <p:column headerText="idOferta">
+                <h:outputText value="#{oferta.getIdOferta()}"/>
+            </p:column>
+            <p:column headerText="idCategoria">
+                <h:outputText value="#{oferta.getIdCategoria()}"/>
+            </p:column>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{oferta.getNombre()}"/>
+            </p:column>
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{oferta.getDescripcion()}"/>
+            </p:column>
+            <p:column headerText="Fecha de Creacion">
+                <h:outputText value="#{oferta.getFechacreacion()}"/>
+            </p:column>
+            <p:column headerText="Estado">
+                <h:outputText value="#{oferta.getEstado()}"/>
+            </p:column>
+            <p:column headerText="Fecha de Modificacion">
+                <h:outputText value="#{oferta.getFechamodificacion()}"/>
+            </p:column>
+            <p:column headerText="Nickname">
+                <h:outputText value="#{oferta.getNickname()}"/>
+            </p:column>
+        </p:dataTable>
+        <h:panelGrid id="grid" cellpadding="2" columns="2">
+
+            <p:outputLabel for="idCategoria" value="Id Categoria: "/>
+            <p:inputText id="idCategoria" type="String" binding="#{idCategoria}"/>
+
+            <p:outputLabel for="nombre" value="Nombre Oferta: "/>
+            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
+
+            <p:outputLabel for="descripcion" value="Descripcion Oferta: "/>
+            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
+
+            <p:outputLabel for="estado" value="Estado: "/>
+            <p:inputText id="estado" type="String" binding="#{estado}"/>
+
+            <p:outputLabel for="nickname" value="Nickname: "/>
+            <p:inputText id="nickname" type="String" binding="#{nickname}"/>
+        </h:panelGrid>
+        <p:commandButton actionListener="#{OfertasBean.registrarOferta(idCategoria.value,nombre.value,descripcion.value,estado.value,nickname.value)}" value="Registrar Oferta"/>
+    </h:form>
+</h:body>
+</html>
+

@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.entities;
 
 
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -62,12 +63,15 @@ public class Respuesta {
     }
 
     public String getComentarios() {
+
         return this.comentarios;
+
     }
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
+
 
     public Date getFechaDeCreacion() {
         return this.fechaDeCreacion;
@@ -87,14 +91,17 @@ public class Respuesta {
 
     public String getNickname() {
         return this.nickname;
+
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
     @Override
     public String toString(){
         return "Respuesta{" + "idNecesidad="+idNecesidad+", nombre="+nombre+", comentarios="+comentarios+", nickname="+nickname+", fechacreacion="+fechaDeCreacion+"}\n";
     }
+
 
 }
