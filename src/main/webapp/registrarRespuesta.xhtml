@@ -12,7 +12,7 @@
     <h:form id="Respuesta_form">
         <p:dataTable var="respuesta" value="#{RespuestasBean.consultarRespuestas()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="10"  id="idRespuesta"
+                     rows="10" selectionMode="single" id="idRespuesta"
                      rowKey="#{respuesta.getIdRespuesta()}">
             <f:facet name="header"> Respuestas </f:facet>
 

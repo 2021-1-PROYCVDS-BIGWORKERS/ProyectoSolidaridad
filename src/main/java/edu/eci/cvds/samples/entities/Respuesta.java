@@ -94,7 +94,7 @@ public class Respuesta {
     }
     @Override
     public String toString(){
-        return "Respuesta{" + "idNecesidad="+idNecesidad+", nombre="+nombre+", comentarios="+comentarios+", nickname="+nickname+", fechacreacion="+fechaDeCreacion+"}\n";
+        return "Respuesta{" + "idRespuesta="+idRespuesta+ "idNecesidad="+idNecesidad+", nombre="+nombre+", comentarios="+comentarios+", nickname="+nickname+", fechacreacion="+fechaDeCreacion+"}\n";
     }
 
 }

@@ -19,7 +19,7 @@
     </insert>
     
     <resultMap id="RespuestaResult" type="Respuesta">
-        <id property="idRespuesta" column="irespuesta"/>
+        <id property="idRespuesta" column="idrespuesta"/>
         <result property="idOferta" column="idoferta"/>
         <result property="idNecesidad" column="idnecesidad"/>
         <result property="nombre" column="nombre"/>
