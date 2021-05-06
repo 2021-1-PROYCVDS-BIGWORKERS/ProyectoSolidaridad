@@ -11,6 +11,7 @@ public interface NecesidadMapper {
     List<Necesidad> consultarNecesidades();
     
     Necesidad consultarNecesidad(@Param("nombre") String nombre);
+    List<Necesidad> consultarNumeroNecesidadPorEstado(@Param("estado") String estado);
 
     void updateEstado(@Param("necesidadNombre")String necesidadNombre,@Param("estado") String estado);
     

@@ -50,6 +50,16 @@ public class MyBatisNecesidadesDAO implements NecesidadesDAO {
         }
     }
 
+    @Override
+    public List<Necesidad> consultarNumeroNecesidadPorEstado(String estado) throws SolidaridadException {
+        try{
+            return NecesidadMapper.consultarNumeroNecesidadPorEstado(estado);
+        }
+        catch (Exception exception){
+            throw new SolidaridadException("Error al consultar las necesidades ",exception );
+        }
+    }
+
 
     }
 
