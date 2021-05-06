@@ -16,11 +16,10 @@ public abstract class BasePageBean implements Serializable {
         System.out.println("111111111111111111");
         if (injector == null) {
             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-            System.out.println(servletContext);
-            System.out.println("222222222222");
+            
             injector = (Injector) servletContext.getAttribute(Injector.class.getName());
             System.out.println((Injector) servletContext.getAttribute(Injector.class.getName()) );
-            System.out.println("3333333333");
+           
         }
         return injector;
     }

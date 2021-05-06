@@ -1,53 +1,61 @@
 package edu.eci.cvds.samples.entities;
 
-import java.io.Serializable;
-import java.util.Date;
 
-public class Respuesta implements Serializable{
 
-    private int idRespuesta;
-    private int idOferta;
-    private int idNecesidad;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.UUID;
+
+public class Respuesta {
+    private String idRespuesta;
+    private String idNecesidad;
+    private String idOferta;
     private String nombre;
     private String comentarios;
-    private Date fechacreacion;
-    private Date fechamodificacion;
+    private Date fechaDeCreacion;
+    private Date fechaDeModificacion;
     private String nickname;
 
-    public Respuesta(int idRespuesta,int idOferta,int idNecesidad,String nombre,String comentarios,Date fechacreacion,Date fechamodificacion,String nickname){
-    this.idRespuesta = idRespuesta;
-    this.idOferta = idOferta;
-    this.idNecesidad = idNecesidad;
-    this.nombre = nombre;
-    this.comentarios = comentarios;
-    this.fechacreacion = fechacreacion;
-    this.fechamodificacion = fechamodificacion;
-    this.nickname = nickname;
+   
+
+    public Respuesta(String nombre, String comentarios, String idNecesidad,String idOferta, String nickname){
+        this.idRespuesta= UUID.randomUUID().toString();
+        this.idOferta = idOferta;
+        this.idNecesidad = idNecesidad;
+        this.nombre = nombre;
+        this.comentarios = comentarios;
+        this.fechaDeCreacion = Date.valueOf(LocalDate.now());
+        this.fechaDeModificacion = Date.valueOf(LocalDate.now());
+        this.nickname=nickname;
+    }
+    public Respuesta(String idRespuesta,String idNecesidad, String idOferta, String nombre, String comentarios, Date fechaDeCreacion, Date fechaDeModificacion,String nickname){
+    }
+    public String getIdRespuesta() {
+        return this.idRespuesta;
     }
 
-    public int getIdRespuesta() {
-        return idRespuesta;
-    }
-    public void setIdRespuesta(int idRespuesta) {
+    public void setIdRespuesta(String idRespuesta) {
         this.idRespuesta = idRespuesta;
     }
-    public int getIdOferta() {
-        return idOferta;
-    }
-    public void setIdOferta(int idOferta) {
-        this.idOferta = idOferta;
+
+    public String getIdNecesidad() {
+        return this.idNecesidad;
     }
 
-    public int getIdNecesidad() {
-        return idNecesidad;
-    }
-
-    public void setIdNecesidad(int idNecesidad) {
+    public void setIdNecesidad(String idNecesidad) {
         this.idNecesidad = idNecesidad;
     }
 
+    public String getIdOferta() {
+        return this.idOferta;
+    }
+
+    public void setIdOferta(String idOferta) {
+        this.idOferta = idOferta;
+    }
+
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -55,34 +63,45 @@ public class Respuesta implements Serializable{
     }
 
     public String getComentarios() {
-        return comentarios;
+
+        return this.comentarios;
+
     }
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
 
-    public Date getFechacreacion() {
-        return fechacreacion;
+
+    public Date getFechaDeCreacion() {
+        return this.fechaDeCreacion;
     }
 
-    public void setFechacreacion(Date fechacreacion) {
-        this.fechacreacion = fechacreacion;
+    public void setFechaDeCreacion(Date fechaDeCreacion) {
+        this.fechaDeCreacion = fechaDeCreacion;
     }
 
-    public Date getFechamodificacion() {
-        return fechamodificacion;
+    public Date getFechaDeModificacion() {
+        return this.fechaDeModificacion;
     }
 
-    public void setFechamodificacion(Date fechamodificacion) {
-        this.fechamodificacion = fechamodificacion;
+    public void setFechaDeModificacion(Date fechaDeModificacion) {
+        this.fechaDeModificacion = fechaDeModificacion;
     }
 
     public String getNickname() {
-        return nickname;
+        return this.nickname;
+
     }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    @Override
+    public String toString(){
+        return "Respuesta{" + "idNecesidad="+idNecesidad+", nombre="+nombre+", comentarios="+comentarios+", nickname="+nickname+", fechacreacion="+fechaDeCreacion+"}\n";
+    }
+
+
 }
