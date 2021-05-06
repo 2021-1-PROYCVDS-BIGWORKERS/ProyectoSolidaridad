@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.services.client;
 
 
+
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
@@ -27,6 +28,13 @@ public class MyBatisClient {
         System.out.println("--------------------------------------------");
         //System.out.println(necesidadesService.consultarNecesidades()) ;
         //System.out.println(respuestasService.consultarRespuesta("Boy")) ;
+        OfertasService ofertasService = SolidaridadFactory.getInstance().getOfertasService();
+            System.out.println("--------------------------------------------");
+            //ofertasService.registrarOferta(new Oferta("1", "Categoria1", "JAHDSJJ","Activa","4"));
+            //ofertasService.actualizarOferta("Yoko", "Activa");
+            //System.out.println(ofertasService.consultarOfertas()) ;
+            System.out.println(ofertasService.consultarOferta("Yoko")) ;
         
+
     }
 }
