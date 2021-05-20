@@ -54,12 +54,16 @@
 
         </h:panelGrid>
         <p:commandButton actionListener="#{NecesidadesBean.actualizarNecesidad(nombre.value,estado.value)}" value="Actualizar Necesidad"/>
+        
         <p:commandButton value="XLS" styleClass="pr-mr2 p-mb-2">
             <p:dataExporter target="idNecesidad" type="xls" fileName="reporteNecesidad"/>
         </p:commandButton>
+        
         <p:commandButton value="PDF" styleClass="pr-mr2 p-mb-2">
             <p:dataExporter target="idNecesidad" type="pdf" fileName="reporteNecesidad"/>
+        
         </p:commandButton>
+        
         <div class="card">
             <p:chart type="pie" model="#{NecesidadesBean.pieModel}" style="width:400px;height:300px"/>
         </div>                                 

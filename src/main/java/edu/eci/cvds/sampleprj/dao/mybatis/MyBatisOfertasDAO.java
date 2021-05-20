@@ -51,5 +51,14 @@ public class MyBatisOfertasDAO implements OfertasDAO {
             throw new SolidaridadException("La oferta consultada no existe");
         }
     }
+    @Override
+    public List<Oferta> consultarNumeroOfertaPorEstado(String estado) throws SolidaridadException {
+        try{
+            return ofertaMapper.consultarNumeroOfertaPorEstado(estado);
+        }
+        catch (Exception exception){
+            throw new SolidaridadException("Error al consultar las ofertas ",exception );
+        }
+    }
 }
 
