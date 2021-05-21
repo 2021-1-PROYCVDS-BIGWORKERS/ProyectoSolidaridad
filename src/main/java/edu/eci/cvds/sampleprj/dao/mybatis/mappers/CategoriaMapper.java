@@ -12,5 +12,7 @@ public interface CategoriaMapper {
 
     Categoria consultarCategoria(@Param("nombre") String nombre);
 
+    List<Categoria> consultarNumeroCategoriasPorCategoria(@Param("categoria") String categoria);
+
     void update(@Param("categoria") Categoria categoria, @Param("aNombre") String aNombre);
 }
