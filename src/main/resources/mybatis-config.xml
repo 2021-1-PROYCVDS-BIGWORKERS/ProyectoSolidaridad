@@ -14,6 +14,7 @@
     <typeAlias alias="Necesidad" type="edu.eci.cvds.samples.entities.Necesidad"/>
 		<typeAlias alias="Respuesta" type="edu.eci.cvds.samples.entities.Respuesta"/>
     <typeAlias alias="Oferta" type="edu.eci.cvds.samples.entities.Oferta"/>
+		<typeAlias alias="CategoriaInvalida" type="edu.eci.cvds.samples.entities.CategoriaInvalida"/>
 		<!--
 		<typeAlias alias="Oferta" type="edu.eci.cvds.samples.entities.Oferta"/>
 		<typeAlias alias="Rol" type="edu.eci.cvds.samples.entities.Rol"/>-->
@@ -38,6 +39,7 @@
     <mapper resource="mappers/NecesidadMapper.xml"/>
 		<mapper resource="mappers/RespuestaMapper.xml"/>
     <mapper resource="mappers/OfertaMapper.xml"/>
+		<mapper resource="mappers/CategoriaInvalidaMapper.xml"/>
 		<!--
         <mapper resource="mappers/OfertaMapper.xml"/>
 		-->

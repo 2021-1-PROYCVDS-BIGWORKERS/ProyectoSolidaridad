@@ -25,17 +25,20 @@ public class SolidaridadFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
 
-
                 bind(CategoriasService.class).to(CategoriasServiceImpl.class);
                 bind(CategoriasDAO.class).to(MyBatisCategoriasDAO.class);
+
                 bind(RespuestasService.class).to(RespuestasServiceImpl.class);
-                
                 bind(RespuestasDAO.class).to(MyBatisRespuestasDAO.class);
                 
                 bind(NecesidadesService.class).to(NecesidadesServiceImpl.class);
                 bind(NecesidadesDAO.class).to(MyBatisNecesidadesDAO.class);
+
                 bind(OfertasService.class).to(OfertasServiceImpl.class);
                 bind(OfertasDAO.class).to(MyBatisOfertasDAO.class);
+
+                bind(CategoriasInvalidasService.class).to(CategoriasInvalidasServiceImpl.class);
+                bind(CategoriasInvalidasDAO.class).to(MyBatisCategoriasInvalidasDAO.class);
 
             }
         });
@@ -70,6 +73,12 @@ public class SolidaridadFactory {
         return optionalInjector.get().getInstance(OfertasService.class);
     }
 
+    public CategoriasInvalidasService getCategoriasInvalidasService() {
+        if(!optionalInjector.isPresent()){
+            optionalInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
+        }
+        return optionalInjector.get().getInstance(CategoriasInvalidasService.class);
+    }
     public static SolidaridadFactory getInstance(){ return instance; }
 }
 
