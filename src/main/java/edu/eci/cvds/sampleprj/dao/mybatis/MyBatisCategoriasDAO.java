@@ -60,4 +60,13 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
             throw new SolidaridadException("La categoria consultada no existe");
         }
     }
+    @Override
+    public void delete(String nombre, String idCategoria) throws SolidaridadException {
+        try{
+            categoriaMapper.eliminarCategoria(nombre,idCategoria);
+        }catch (Exception e){
+            System.out.println("3");
+            e.printStackTrace();
+        }
+    }
 }

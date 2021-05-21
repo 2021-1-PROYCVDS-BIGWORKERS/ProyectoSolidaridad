@@ -19,6 +19,7 @@ public class CategoriasBean extends BasePageBean{
     private CategoriasInvalidasService categoriasInvalidasService;
 
     public void registrarCategoria( String nombre, String descripcion){
+
         try{
            // CategoriasInvalidasService categoriasInvalidasService = SolidaridadFactory.getInstance().getCategoriasInvalidasService();
             System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
@@ -38,11 +39,19 @@ public class CategoriasBean extends BasePageBean{
             }
 
     
+
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
+    public void eliminarCategoria( String nombre, String idCategoria)throws SolidaridadException{
+        try{
+            categoriasService.eliminarCategoria(nombre, idCategoria);
+        }catch (Exception e){
+            System.out.println("1");
+            e.printStackTrace();
+        }
+    }
     public Categoria consultarCategoria(String nombre) throws SolidaridadException{
         try{
             return categoriasService.consultarCategoria(nombre);

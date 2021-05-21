@@ -12,13 +12,16 @@ import java.time.LocalDate;
 
 public class MyBatisClient {
     public static void main(String[] args) throws SolidaridadException {
+
         CategoriasService categoriasService = SolidaridadFactory.getInstance().getCategoriasService();
         CategoriasInvalidasService categoriasInvalidasService =SolidaridadFactory.getInstance().getCategoriasInvalidasService();
         //categoriasService.registrarCategoria(new Categoria("pez","Estudiar l"));
+
         System.out.println("--------------------------------------------");
         //System.out.println(categoriasService.consultarCategorias());
         System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
         System.out.println("--------------------------------------------");
+
         //System.out.println(categoriasService.consultarCategoria("pez"));
         System.out.println(categoriasInvalidasService.consultarCategoriaInvalida("pez"));
         //categoriasService.actualizarCategoria("Greg",null,null,"En proceso");
@@ -29,6 +32,7 @@ public class MyBatisClient {
         //respuestasService.registrarRespuesta(new Respuesta("prueba","funciona", "2", null, "2"));
         //necesidadesService.registrarNecesidad(new Necesidad("PaPa", "Falta de de PaPa","1" ,"Poca", "1"));
         //System.out.println("--------------------------------------------");
+
         //System.out.println(necesidadesService.consultarNecesidades()) ;
         //System.out.println(respuestasService.consultarRespuesta("Boy")) ;
         //OfertasService ofertasService = SolidaridadFactory.getInstance().getOfertasService();

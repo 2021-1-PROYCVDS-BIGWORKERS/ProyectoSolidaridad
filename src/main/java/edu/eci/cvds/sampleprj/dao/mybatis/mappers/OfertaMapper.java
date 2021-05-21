@@ -9,6 +9,7 @@ import java.util.List;
 public interface OfertaMapper {
     void insertarOferta(@Param("oferta") Oferta oferta);
     List<Oferta> consultarOfertas();
+    List<Oferta> consultarNumeroOfertaPorEstado(@Param("estado") String estado);
 
     Oferta consultarOferta(@Param("nombre") String nombre);
 

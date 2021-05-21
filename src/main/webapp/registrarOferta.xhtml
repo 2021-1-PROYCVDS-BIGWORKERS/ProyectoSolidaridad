@@ -57,7 +57,11 @@
             <p:outputLabel for="nickname" value="Nickname: "/>
             <p:inputText id="nickname" type="String" binding="#{nickname}"/>
         </h:panelGrid>
+
+
         <p:commandButton actionListener="#{OfertasBean.registrarOferta(idCategoria.value,nombre.value,descripcion.value,estado.value,nickname.value)}" value="Registrar Oferta"/>
+    
+    
     </h:form>
 </h:body>
 </html>

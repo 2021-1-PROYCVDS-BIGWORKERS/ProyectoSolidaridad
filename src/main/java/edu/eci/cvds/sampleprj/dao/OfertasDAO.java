@@ -13,5 +13,7 @@ public interface OfertasDAO{
         void update(String nombreOferta,String estado) throws SolidaridadException;
 
         Oferta load(String nombre) throws SolidaridadException;
+
+        public List<Oferta> consultarNumeroOfertaPorEstado( String estado) throws SolidaridadException;
 }
 
