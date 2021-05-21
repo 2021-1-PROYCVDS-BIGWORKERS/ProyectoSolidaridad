@@ -9,6 +9,18 @@
 </h:head>
 
 <h:body>
+    <div>
+        <h1>Estoy en usuario</h1>
+        <p:separator />
+        <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <p:commandButton actionListener="#{login.logOut}" value="salir" >
+            </p:commandButton>
+            
+        </h:form>
+    </div>
     <h:form id="Categoria_form">
         <p:dataTable var="categoria" value="#{CategoriasBean.consultarCategorias()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
