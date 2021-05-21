@@ -1,4 +1,5 @@
 package edu.eci.cvds.view;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import com.google.inject.Inject;
