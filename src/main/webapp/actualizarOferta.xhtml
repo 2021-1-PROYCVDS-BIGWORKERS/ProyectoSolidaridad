@@ -51,7 +51,18 @@
 
         </h:panelGrid>
         <p:commandButton actionListener="#{OfertasBean.actualizarOferta(nombre.value,estado.value)}" value="Actualizar Oferta"/>
+        
+        <p:commandButton value="XLS" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idOferta" type="xls" fileName="reporteOferta"/>
+        </p:commandButton>
+        
+        <p:commandButton value="PDF" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idOferta" type="pdf" fileName="reporteOferta"/>
+        </p:commandButton>
 
+        <div class="card">
+            <p:chart type="pie" model="#{OfertasBean.pieModel}" style="width:400px;height:300px"/>
+        </div>  
 
     </h:form>
 </h:body>

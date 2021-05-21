@@ -6,6 +6,8 @@ import com.google.inject.Inject;
 import edu.eci.cvds.samples.entities.Oferta;
 import edu.eci.cvds.samples.services.OfertasService;
 import edu.eci.cvds.samples.services.SolidaridadException;
+import org.primefaces.model.chart.*;
+import javax.annotation.PostConstruct;
 
 import java.sql.Date;
 import java.util.List;
@@ -15,6 +17,51 @@ import java.util.List;
 public class OfertasBean extends BasePageBean{
     @Inject
     private OfertasService ofertasService;
+    private PieChartModel pieModel;
+
+    @PostConstruct
+    public void init() {
+        super.init();
+        try {
+            
+            pieModel= createPieModel();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    private PieChartModel  createPieModel()  {
+        pieModel = new PieChartModel();
+        try{
+            pieModel.set("Activas",ofertasService.consultarNumeroOfertaPorEstado("Activa"));
+            pieModel.set("Cerradas",ofertasService.consultarNumeroOfertaPorEstado("Cerrada"));
+            pieModel.set("Resueltas",ofertasService.consultarNumeroOfertaPorEstado("Resuelta"));
+            pieModel.set("En proceso",ofertasService.consultarNumeroOfertaPorEstado("En proceso"));
+            pieModel.setTitle("");
+            pieModel.setShowDataLabels(true);
+            pieModel.setDataLabelFormatString("%dK");
+            pieModel.setLegendPosition("e");
+            pieModel.setShowDatatip(true);
+            pieModel.setShowDataLabels(true);
+            pieModel.setDataFormat("value");
+            pieModel.setDataLabelFormatString("%d");
+            pieModel.setSeriesColors("ff8c00,87cefa");
+            
+            
+        }catch (Exception e){
+            e.printStackTrace();
+           
+        }
+        return pieModel;
+
+    }
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+
+    public void setPieModel(PieChartModel pieModel) {
+        this.pieModel = pieModel;
+    }
+
 
     public void registrarOferta(String idCategoria, String nombre, String descripcion,String estado,String nickname) {
         try {

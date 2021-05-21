@@ -48,7 +48,17 @@ public class OfertasServiceImpl implements OfertasService {
         }catch (Exception e){
             e.printStackTrace();
             throw new SolidaridadException("La oferta "+nombre+" no existe");
-            }
         }
     }
+    @Override
+    public int consultarNumeroOfertaPorEstado(String estado) {
+        try{
+            return ofertasDAO.consultarNumeroOfertaPorEstado(estado).size();
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
+}
+
 

@@ -42,6 +42,8 @@
             <p:column headerText="Usuario">
                 <h:outputText value="#{necesidad.getNickname()}"/>
             </p:column>
+
+
         </p:dataTable>
         <h:panelGrid id="grid" cellpadding="5" columns="5">
 
@@ -50,16 +52,26 @@
 
             <p:outputLabel for="estado" value="Nuevo estado: "/>
             <p:inputText id="estado" type="String" binding="#{estado}"/>
-
+            
+            <select  id="estado" name="estado">
+                <option selected="selected">Cerrada</option>
+                <option>Activa</option>
+                <option>En proceso</option>
+                <option>Resuelta</option>
+            </select>
 
         </h:panelGrid>
         <p:commandButton actionListener="#{NecesidadesBean.actualizarNecesidad(nombre.value,estado.value)}" value="Actualizar Necesidad"/>
+        
         <p:commandButton value="XLS" styleClass="pr-mr2 p-mb-2">
             <p:dataExporter target="idNecesidad" type="xls" fileName="reporteNecesidad"/>
         </p:commandButton>
+        
         <p:commandButton value="PDF" styleClass="pr-mr2 p-mb-2">
             <p:dataExporter target="idNecesidad" type="pdf" fileName="reporteNecesidad"/>
+        
         </p:commandButton>
+        
         <div class="card">
             <p:chart type="pie" model="#{NecesidadesBean.pieModel}" style="width:400px;height:300px"/>
         </div>                                 

@@ -1,33 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title> Registrar Categorias </title>
+    <title>Eliminar Categoria</title>
 </h:head>
-
 <h:body>
-    <div>
-        <h1>Estoy en usuario</h1>
-        <p:separator />
-        <h:form>
-            <p:messages id="messages" showDetail="true" closable="true">
-                <p:autoUpdate />
-            </p:messages>
-            <p:commandButton actionListener="#{login.logOut}" value="salir" >
-            </p:commandButton>
-            
-        </h:form>
-    </div>
-    <h:form id="Categoria_form">
+    <h:form id="eliminarCategoria_form">
         <p:dataTable var="categoria" value="#{CategoriasBean.consultarCategorias()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="10" selectionMode="single" id="idCategoria"
                      rowKey="#{categoria.getIdCategoria()}">
             <f:facet name="header"> Categorias </f:facet>
-            <p:column headerText="idCategoria">
+            <p:column headerText="id">
                 <h:outputText value="#{categoria.getIdCategoria()}"/>
             </p:column>
             <p:column headerText="Nombre">
@@ -46,15 +35,16 @@
                 <h:outputText value="#{categoria.getFechaDeModificacion()}"/>
             </p:column>
         </p:dataTable>
-        <h:panelGrid id="grid" cellpadding="2" columns="2">
+        <h:panelGrid id="grid" cellpadding="2" columns="2" >
 
-            <p:outputLabel for="nombre" value="Nombre Categoria: "/>
-            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
+            <p:outputLabel for="enombre" value="Categoria a eliminar nombre:"/>
+            <p:inputText id="enombre" type="String" binding="#{enombre}"/>
 
-            <p:outputLabel for="descripcion" value="Descripcion Categoria: "/>
-            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
+            <p:outputLabel for="eidCategoria" value="Categoria a eliminar idCategoria:"/>
+            <p:inputText id="eidCategoria" type="String" binding="#{eidCategoria}"/>
         </h:panelGrid>
-        <p:commandButton actionListener="#{CategoriasBean.registrarCategoria(nombre.value,descripcion.value)}" value="Registrar Categoria"/>
+        <p:commandButton actionListener="#{CategoriasBean.eliminarCategoria(enombre.value,eidCategoria.value)}" value="Eliminar Categoria"/>
+        
     </h:form>
 </h:body>
 </html>

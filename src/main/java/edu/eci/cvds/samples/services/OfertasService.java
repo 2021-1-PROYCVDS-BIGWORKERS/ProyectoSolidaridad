@@ -12,4 +12,7 @@ public interface OfertasService {
     public abstract void actualizarOferta(String nombreOferta, String estado) throws SolidaridadException;
 
     Oferta consultarOferta(String nombre) throws SolidaridadException;
+
+    int consultarNumeroOfertaPorEstado(String estado);
+
 }

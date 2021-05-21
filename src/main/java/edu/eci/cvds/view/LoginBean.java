@@ -77,12 +77,27 @@ public class LoginBean extends BasePageBean{
             
             HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
             session.setAttribute("correo", correo);
-           
+          
             if(currentUser.hasRole("Administrador")){
                 System.out.println("finaliza redireccion administrador");
                 facesContext.getExternalContext().redirect("/faces/homeAdministrador.xhtml");
             }
-            
+            if(currentUser.hasRole("Estudiante")){
+                System.out.println("finaliza redireccion administrador");
+                facesContext.getExternalContext().redirect("/faces/index.html");
+            }
+            if(currentUser.hasRole("Profesor")){
+                System.out.println("finaliza redireccion administrador");
+                facesContext.getExternalContext().redirect("/faces/index.html");
+            }
+            if(currentUser.hasRole("Egresado")){
+                System.out.println("finaliza redireccion administrador");
+                facesContext.getExternalContext().redirect("/faces/index.html");
+            }
+            if(currentUser.hasRole("Administrativo")){
+                System.out.println("finaliza redireccion administrador");
+                facesContext.getExternalContext().redirect("/faces/index.html");
+            }
             System.out.println("finaliza redireccion");
         
                 
