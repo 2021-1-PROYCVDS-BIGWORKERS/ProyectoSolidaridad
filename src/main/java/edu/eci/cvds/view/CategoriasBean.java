@@ -2,11 +2,13 @@ package edu.eci.cvds.view;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import com.google.inject.Inject;
-import edu.eci.cvds.samples.entities.Categoria;
-import edu.eci.cvds.samples.services.CategoriasService;
+import edu.eci.cvds.samples.entities.*;
+import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
 import org.primefaces.model.chart.*;
 import javax.annotation.PostConstruct;
+import edu.eci.cvds.samples.services.SolidaridadFactory;
+
 
 import java.sql.Date;
 import java.util.List;
@@ -16,6 +18,9 @@ import java.util.List;
 public class CategoriasBean extends BasePageBean{
     @Inject
     private CategoriasService categoriasService;
+  @Inject
+    private CategoriasInvalidasService categoriasInvalidasService;
+
     private PieChartModel pieModel;
 
     @PostConstruct
@@ -76,14 +81,41 @@ public class CategoriasBean extends BasePageBean{
     }
 
 
+
     public void registrarCategoria( String nombre, String descripcion){
+
         try{
-            categoriasService.registrarCategoria(new Categoria(nombre, descripcion));
+           // CategoriasInvalidasService categoriasInvalidasService = SolidaridadFactory.getInstance().getCategoriasInvalidasService();
+            System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
+            boolean valido = true;
+            for (CategoriaInvalida i: categoriasInvalidasService.consultarCategoriasInvalidas()){
+                System.out.println(i.getPalabra()+" "+nombre);
+                if (i.getPalabra().contains(nombre)){
+                    valido =false ;
+                    break;   
+                }
+            }
+            if (valido){
+                categoriasService.registrarCategoria(new Categoria(nombre, descripcion));
+
+            }else{
+                throw new SolidaridadException("La categoria es no Valida");
+            }
+
+    
+
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
+    public void eliminarCategoria( String nombre, String idCategoria)throws SolidaridadException{
+        try{
+            categoriasService.eliminarCategoria(nombre, idCategoria);
+        }catch (Exception e){
+            System.out.println("1");
+            e.printStackTrace();
+        }
+    }
     public Categoria consultarCategoria(String nombre) throws SolidaridadException{
         try{
             return categoriasService.consultarCategoria(nombre);
