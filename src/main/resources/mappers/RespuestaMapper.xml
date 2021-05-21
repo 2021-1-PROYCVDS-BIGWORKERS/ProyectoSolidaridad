@@ -6,6 +6,7 @@
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
 
 
+
     <select id="consultarRespuestas" parameterType="map" resultMap="RespuestaResult">
         select * from respuestas;
     </select>

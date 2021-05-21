@@ -1,13 +1,16 @@
 package edu.eci.cvds.samples.services;
 
 import com.google.inject.Injector;
+
 import edu.eci.cvds.sampleprj.dao.*;
 import edu.eci.cvds.sampleprj.dao.mybatis.*;
 import edu.eci.cvds.samples.services.impl.*;
+
 import org.mybatis.guice.XMLMyBatisModule;
 import java.util.Optional;
 
 import static com.google.inject.Guice.createInjector;
+
 
 
 public class SolidaridadFactory {
@@ -22,6 +25,7 @@ public class SolidaridadFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
 
+
                 bind(CategoriasService.class).to(CategoriasServiceImpl.class);
                 bind(CategoriasDAO.class).to(MyBatisCategoriasDAO.class);
                 bind(RespuestasService.class).to(RespuestasServiceImpl.class);
@@ -30,12 +34,15 @@ public class SolidaridadFactory {
                 
                 bind(NecesidadesService.class).to(NecesidadesServiceImpl.class);
                 bind(NecesidadesDAO.class).to(MyBatisNecesidadesDAO.class);
+                bind(OfertasService.class).to(OfertasServiceImpl.class);
+                bind(OfertasDAO.class).to(MyBatisOfertasDAO.class);
 
             }
         });
     }
 
     private SolidaridadFactory() { optionalInjector = Optional.empty();}
+
 
     public RespuestasService getRespuestasService(){
         if(!optionalInjector.isPresent()){
@@ -55,6 +62,12 @@ public class SolidaridadFactory {
             optionalInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
         }
         return optionalInjector.get().getInstance(CategoriasService.class);
+    }
+    public OfertasService getOfertasService(){
+        if(!optionalInjector.isPresent()){
+            optionalInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
+        }
+        return optionalInjector.get().getInstance(OfertasService.class);
     }
 
     public static SolidaridadFactory getInstance(){ return instance; }

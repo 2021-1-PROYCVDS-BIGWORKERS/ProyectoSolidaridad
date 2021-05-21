@@ -51,6 +51,16 @@ public class NecesidadesServiceImpl implements NecesidadesService {
             throw new SolidaridadException("La necesidad "+nombre+" no existe");
         }
     }   
+    
+    @Override
+    public int consultarNumeroNecesidadPorEstado(String estado) {
+        try{
+            return NecesidadesDAO.consultarNumeroNecesidadPorEstado(estado).size();
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
 }
 
 

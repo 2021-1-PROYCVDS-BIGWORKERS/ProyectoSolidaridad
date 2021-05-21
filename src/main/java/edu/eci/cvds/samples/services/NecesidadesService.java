@@ -12,4 +12,5 @@ public interface NecesidadesService {
     public abstract void actualizarNecesidad(String nombreNecesidad, String estado) throws SolidaridadException;
 
     Necesidad consultarNecesidad(String nombre)throws SolidaridadException;
+    int consultarNumeroNecesidadPorEstado(String estado);
 }

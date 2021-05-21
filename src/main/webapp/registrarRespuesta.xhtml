@@ -16,7 +16,7 @@
                      rowKey="#{respuesta.getIdRespuesta()}">
             <f:facet name="header"> Respuestas </f:facet>
 
-            <p:column headerText="idRespuesta">
+            <p:column headerText="idRespuesta" exportable="false">
                 <h:outputText value="#{respuesta.getIdRespuesta()}"/>
             </p:column>
 
@@ -24,7 +24,7 @@
                 <h:outputText value="#{respuesta.getIdNecesidad()}"/>
             </p:column>
 
-            <p:column headerText="idOferta">
+            <p:column headerText="idOferta" >
                 <h:outputText value="#{respuesta.getIdOferta()}"/>
             </p:column>
 
@@ -32,19 +32,19 @@
                 <h:outputText value="#{respuesta.getNombre()}"/>
             </p:column>
 
-            <p:column headerText="Comentarios">
+            <p:column headerText="Comentarios" exportable="false">
                 <h:outputText value="#{respuesta.getComentarios()}"/>
             </p:column>
 
-            <p:column headerText="Fecha de Creacion">
+            <p:column headerText="Fecha de Creacion" exportable="false">
                 <h:outputText value="#{respuesta.getFechaDeCreacion()}"/>
             </p:column>
 
-            <p:column headerText="Fecha de Modificacion">
+            <p:column headerText="Fecha de Modificacion" exportable="false">
                 <h:outputText value="#{respuesta.getFechaDeModificacion()}"/>
             </p:column>
 
-            <p:column headerText="Usuario">
+            <p:column headerText="Usuario" exportable="false">
                 <h:outputText value="#{respuesta.getNickname()}"/>
             </p:column>
 
@@ -69,7 +69,12 @@
 
         </h:panelGrid>
         <p:commandButton actionListener="#{RespuestasBean.registrarRespuesta(nombre.value,comentarios.value,idnecesidad.value,idoferta.value,nickname.value)}" value="Registrar Necesidad"/>
-        
+        <p:commandButton value="XLS" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idRespuesta" type="xls" fileName="reporteRespuesta"/>
+        </p:commandButton>
+        <p:commandButton value="PDF" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idRespuesta" type="pdf" fileName="reporteRespuesta"/>
+        </p:commandButton>
     </h:form>
 </h:body>
 </html>
