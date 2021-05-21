@@ -6,12 +6,13 @@ import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
 import edu.eci.cvds.samples.services.SolidaridadFactory;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
 public class MyBatisClient {
-    public static void main(String[] args) throws SolidaridadException {
+    public static void main(String[] args) throws SolidaridadException, PSQLException {
         CategoriasService categoriasService = SolidaridadFactory.getInstance().getCategoriasService();
         System.out.println("--------------------------------------------");
         /*categoriasService.registrarCategoria(new Categoria("Calculo Diferencial",

@@ -5,6 +5,8 @@ import edu.eci.cvds.sampleprj.dao.CategoriasDAO;
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.CategoriasService;
 import edu.eci.cvds.samples.services.SolidaridadException;
+import org.postgresql.util.PSQLException;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -33,12 +35,11 @@ public class CategoriasServiceImpl implements CategoriasService {
     }
 
     @Override
-    public void actualizarCategoria(String categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException {
+    public void actualizarCategoria(String categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException, PSQLException {
         try{
             Categoria categoria = consultarCategoria(categoriaNombre);
             categoriasDAO.update(categoria,nombre,descripcion,estado);
         }catch (Exception e){
-            e.printStackTrace();
             throw new SolidaridadException("No se puede actualizar la categoria "+nombre);
         }
     }

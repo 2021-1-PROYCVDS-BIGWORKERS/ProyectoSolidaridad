@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
+
+
+
+    <select id="consultarRespuestas" parameterType="map" resultMap="RespuestaResult">
+        select * from respuestas;
+    </select>
+     <select id="consultarRespuesta" parameterType="map" resultMap="RespuestaResult">
+        select * from respuestas where nombre=#{nombre};
+    </select>
+    <insert parameterType="map" id="insertarRespuesta">
+        insert into respuestas(idrespuesta, idoferta,idnecesidad,nombre,comentarios,fechacreacion,fechamodificacion,nickname) values
+        (#{respuesta.idRespuesta},#{respuesta.idOferta},#{respuesta.idNecesidad},#{respuesta.nombre},#{respuesta.comentarios},#{respuesta.fechaDeCreacion},
+        #{respuesta.fechaDeModificacion},#{respuesta.nickname})
+    </insert>
+    
+    <resultMap id="RespuestaResult" type="Respuesta">
+        <id property="idRespuesta" column="irespuesta"/>
+        <result property="idOferta" column="idoferta"/>
+        <result property="idNecesidad" column="idnecesidad"/>
+        <result property="nombre" column="nombre"/>
+        <result property="comentarios" column="comentarios"/>
+        <result property="fechaDeCreacion" column="fechacreacion"/>
+        <result property="fechaDeModificacion" column="fechamodificacion"/>
+        <result property="nickname" column="nickname"/>
+    </resultMap>
+</mapper>
