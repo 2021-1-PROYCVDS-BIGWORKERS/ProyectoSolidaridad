@@ -52,6 +52,16 @@ public class CategoriasServiceImpl implements CategoriasService {
             throw new SolidaridadException("La categoria "+nombre+" no existe");
         }
     }
+    @Override
+    public int consultarNumeroCategoriasPorCategoria(String categoria) {
+        try{
+            System.out.println(categoriasDAO.consultarNumeroCategoriasPorCategoria(categoria).size());
+            return categoriasDAO.consultarNumeroCategoriasPorCategoria(categoria).size();
+        }
+        catch (Exception e){
+            return 0;
+        }
+    }
 
     @Override
     public void eliminarCategoria(String nombre,String idCategoria) throws SolidaridadException {

@@ -15,4 +15,6 @@ public interface CategoriasDAO {
     void update(Categoria categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException;
 
     Categoria load(String nombre) throws SolidaridadException;
+    public List<Categoria> consultarNumeroCategoriasPorCategoria( String categoria) throws SolidaridadException;
+    
 }

@@ -63,6 +63,15 @@
 
             <p:commandButton actionListener="#{CategoriasBean.actualizarCategoria(aNombre.value,nNombre.value,descripcion.value,estado.value)}" value="Actualizar Categoria"/>
         </h:panelGrid>
+        <p:commandButton value="XLS" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idCategoria" type="xls" fileName="reporteCategoria"/>
+        </p:commandButton>
+        <p:commandButton value="PDF" styleClass="pr-mr2 p-mb-2">
+            <p:dataExporter target="idCategoria" type="pdf" fileName="reporteCategoria"/>
+        </p:commandButton>
+        <div class="card">
+            <p:chart type="pie" model="#{CategoriasBean.pieModel}" style="width:400px;height:300px"/>
+        </div> 
     </h:form>
 </h:body>
 </html>

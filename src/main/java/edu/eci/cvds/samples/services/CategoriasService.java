@@ -14,4 +14,6 @@ public interface CategoriasService {
     public abstract void actualizarCategoria(String categoriaNombre, String nombre, String descripcion, String estado) throws SolidaridadException;
 
     Categoria consultarCategoria(String nombre) throws SolidaridadException;
+    int consultarNumeroCategoriasPorCategoria(String categoria);
+    
 }

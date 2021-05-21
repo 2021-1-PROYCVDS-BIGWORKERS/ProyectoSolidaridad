@@ -5,6 +5,11 @@
 
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper">
 
+<select id="consultarNumeroCategoriasPorCategoria" parameterType="map" resultMap="CategoriaResult">
+        select categorias.idcategoria ,categorias.nombre , categorias.descripcion , categorias.fechacreacion , categorias.estado ,categorias.fechamodificacion from categorias  
+          JOIN necesidades ON necesidades.idcategoria = categorias.idcategoria
+        where categorias.nombre= #{categoria};
+    </select>
     <select id="consultarCategorias" parameterType="map" resultMap="CategoriaResult">
         select * from categorias;
     </select>
