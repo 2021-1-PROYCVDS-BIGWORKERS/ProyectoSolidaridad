@@ -27,7 +27,7 @@ PROYECTO SOLIDARIDAD ESCUELA
   
 
   
-  La aplicacion maneja 2 tipos de roles para el inicio de sesion, administrador y usuarios.AYUDAAAAAAAAA
+  La aplicacion maneja 2 tipos de roles para el inicio de sesion, administrador y usuarios.
   
   
   Los servicios del admisitrador son:
@@ -47,37 +47,64 @@ PROYECTO SOLIDARIDAD ESCUELA
    + Actualizar estado Oferta.
    + Gestionar las categorias no validas. 
 
+Al ingresar a la pagina principla encontramos las pruebas como muestra la siguiente imagen 
+![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/WhatsApp%20Image%202021-05-22%20at%208.14.50%20AM.jpeg)
 
-  + Para registrar una categoria necesitamos 
+Encontramos el menu en la parte superior para cada uno de los procesos de nuestra aplicacion
+
+![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(17).png)
+
+
+Para Categoria tenemos tres procesos , registrar , actualizar y eliminar 
+
+![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(21).png)
+
+  + Para registrar una categoria necesitamos ingresar el nombre y la descripcion 
+
+![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(18).png)
+
   
-  + Para actualizar la categoria neecsitamos
+  + Para actualizar la categoria necesitamos el nombre de la anterior categoria en nombre , la descripcion y el estado de esta nueva
   
-  + Para eliminar la categoria 
+  ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(19).png)
+
+  
+  
+  + Para eliminar la categoria necesitamos el nombre de la categoria a eliminar y su id , el cual podemos encontrar en la parte de arriba  
+
+![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(20).png)
     
    
-   + Para el reporte de ofertas
+   + Para el reporte de ofertas tenemos dos opciones un XLS PDF 
+   
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(26).png)
     
    + Para el reporte de Necesidades.
-    
-   + Para el reporte de respuestas.
-    
-   + Para el reporte de Categorias mas solicitadas u ofrecidas.
+   
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(26).png)
     
     
-   + Para registrar una necesidad necesitamos 
+    
+   + Para registrar una necesidad necesitamos ingresar el nombre y la descripcion
    
-   + Para registrar una Oferta.
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(22).png)
    
-   + Para registrar Respuestas.
+   + Para registrar una Oferta ingresar el nombre y la descripcion 
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(24).png)
    
-   + Para actualizar estado Necesidad.** 
+   + Para registrar Respuestas ingresar el nombre , comentarios , id de la necesidad a la que le damos respuesta, id de la oferta relacionada y el nickname 
+   https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(28).png
    
-   + Para actualizar estado Oferta.
-   
-   + Para gestionar las categorias no validas.**
+   + Para actualizar estado Necesidad necesitamos nombre y nuevo estado
 
-    
-  + **_Imágenes y descripción de las funcionalidades más importantes_**
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(23).png)
+   
+   + Para actualizar estado Oferta nombre y nuevo estado
+   
+   ![alt text](https://github.com/2021-1-PROYCVDS-BIGWORKERS/ProyectoSolidaridad/blob/master/Imagenes/MicrosoftTeams-image%20(25).png)
+   
+ 
+
   
   
   
