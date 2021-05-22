@@ -50,6 +50,29 @@ public class CategoriaTest {
     }
 
     @Test
+    public void deberiaEliminarCategoria(){
+        try{
+            categoriasService.eliminarCategoria("Winne","3");
+            try{
+                categoriasService.consultarCategoria("Winne");
+            }catch (SolidaridadException e){
+                Assert.assertTrue(true);
+            }
+        }catch (SolidaridadException e){
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void noDeberiaRegistrarCategoriaInvalida(){
+        try{
+            categoriasService.registrarCategoria(new Categoria("Green","Estudiar Calculo integral"));
+        }catch (SolidaridadException e){
+            Assert.assertTrue(true);
+        }
+    }
+
+    @Test
     public void noDeberiaRegistrarCategoriasRepetidas(){
         try {
             categoriasService.registrarCategoria(new Categoria("Ecuaciones Diferenciales","Estudiar Ecuaciones Diferenciales"));
