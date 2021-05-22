@@ -18,7 +18,7 @@ html {
   }
   
   .full-screen-container {
-	background-image: url('https://escuelaing.s3.amazonaws.com/staging/images/_DSC0759.max-1440x800.jpg?AWSAccessKeyId=AKIAWFY3NGTFBJGCIWME&Signature=UEFjuS28JYuRP5FfAeTW37OryRU%3D&Expires=1621563252');
+	background-image: url('https://escuelaing.s3.amazonaws.com/staging/images/DJI_0250.2e16d0ba.fill-1200x800-c100.jpg?AWSAccessKeyId=AKIAWFY3NGTFBJGCIWME&Signature=nU1eOKQhSiMKsHV8sDVnHy3I3rs%3D&Expires=1624065566');
 	height: 100vh;
 	width: 100vw;
 	background-size: cover;
@@ -49,7 +49,7 @@ html {
   }
   
 .left {
-	background-image: url("https://escuelaing.s3.amazonaws.com/staging/images/_DSC0759.max-1440x800.jpg?AWSAccessKeyId=AKIAWFY3NGTFBJGCIWME&Signature=UEFjuS28JYuRP5FfAeTW37OryRU%3D&Expires=1621563252");
+	background-image: url("https://escuelaing.s3.amazonaws.com/staging/images/DJI_0250.2e16d0ba.fill-1200x800-c100.jpg?AWSAccessKeyId=AKIAWFY3NGTFBJGCIWME&Signature=nU1eOKQhSiMKsHV8sDVnHy3I3rs%3D&Expires=1624065566");
 	background-size: cover;
 	background-position: center;
 	box-shadow: var(--box-shadow);

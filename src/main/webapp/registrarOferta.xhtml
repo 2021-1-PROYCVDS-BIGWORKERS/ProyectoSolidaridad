@@ -8,6 +8,14 @@
     <title> Registrar Ofertas </title>
 </h:head>
 <h:body>
+    <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <p:commandButton actionListener="#{login.logOut}" value="salir" >
+            </p:commandButton>
+            
+        </h:form>
     <h:form id="Oferta_form">
         <p:dataTable var="oferta" value="#{OfertasBean.consultarOfertas()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
