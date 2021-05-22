@@ -40,6 +40,8 @@ public class SolidaridadFactory {
                 bind(CategoriasInvalidasService.class).to(CategoriasInvalidasServiceImpl.class);
                 bind(CategoriasInvalidasDAO.class).to(MyBatisCategoriasInvalidasDAO.class);
 
+                bind(UsuariosDAO.class).to(MyBatisUsuariosDAO.class);
+                bind(UsuariosService.class).to(UsuariosServiceImpl.class);
             }
         });
     }
@@ -71,6 +73,13 @@ public class SolidaridadFactory {
             optionalInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
         }
         return optionalInjector.get().getInstance(OfertasService.class);
+    }
+
+    public UsuariosService getUsuariosService(){
+        if(!optionalInjector.isPresent()){
+            optionalInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
+        }
+        return optionalInjector.get().getInstance(UsuariosService.class);
     }
 
     public CategoriasInvalidasService getCategoriasInvalidasService() {
