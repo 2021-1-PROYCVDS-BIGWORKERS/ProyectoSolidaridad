@@ -6,9 +6,50 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title> Registrar Categorias </title>
+    <link href="../Styles/nav.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </h:head>
 
 <h:body>
+    <!--   Outer-most navebar   -->        
+
+    <nav class="nav-links">
+        <a href="/faces/index.html" class="link same">Home</a>
+        <a href="#" class="link1 same">categorias<i class="fas fa-caret-down"></i></a>
+
+<!--   Navigation inside the about section    -->            
+        
+        <div class="about-content">
+            <a href="/faces/registrarCategoria.xhtml" class="about-link same-about">Registrar Categoria</a>
+            <a href="/faces/actualizarCategoria.xhtml" class="about-link1 same-about">Actualizar Categoria</a>
+            <a href="/faces/eliminarCategoria.xhtml" class="about-link2 same-about">Eliminar Categoria</a>
+        </div>
+        <a href="#" class="link2 same">necesidades <i class="fas fa-caret-down"></i></a>
+        <div class="necesidades-content">
+            <a href="/faces/registrarNecesidad.xhtml" class="about-link same-about">Registrar Necesidad</a>
+            <a href="/faces/actualizarNecesidad.xhtml" class="about-link1 same-about">Actualizar Necesidad</a>
+        </div>
+
+
+        <a href="#" class="link3 same">ofertas<i class="fas fa-caret-down"></i></a>
+                    
+        <div class="aim-content">
+            <a href="/faces/registrarOferta.xhtml" class="aim-link same-aim">Registrar Oferta</a>
+            <a href="/faces/actualizarOferta.xhtml" class="aim-link1 same-aim">Actualizar Oferta</a>
+   
+
+        </div>
+      
+        <a href="#" class="link4 same">respuestas <i class="fas fa-caret-down"></i></a>
+        <div class="respuestas-content">
+            <a href="/faces/registrarRespuesta.xhtml" class="about-link same-about">Registrar respuesta</a>
+            
+        </div>
+        <a href="/faces/surefire-report.html" class="link4 same">pruebas</a>
+        <p:commandButton actionListener="#{login.logOut}" value="salir"  >
+        </p:commandButton>
+    </nav>
     <div>
         <h1>Estoy en usuario</h1>
         <p:separator />
@@ -16,8 +57,7 @@
             <p:messages id="messages" showDetail="true" closable="true">
                 <p:autoUpdate />
             </p:messages>
-            <p:commandButton actionListener="#{login.logOut}" value="salir" >
-            </p:commandButton>
+            
             
         </h:form>
     </div>
