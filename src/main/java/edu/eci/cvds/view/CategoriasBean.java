@@ -5,14 +5,13 @@ import com.google.inject.Inject;
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
+import org.postgresql.util.PSQLException;
 import org.primefaces.model.chart.*;
 import javax.annotation.PostConstruct;
-import edu.eci.cvds.samples.services.SolidaridadFactory;
 
 
 import java.sql.Date;
 import java.util.List;
-
 @ManagedBean(name = "CategoriasBean")
 @ApplicationScoped
 public class CategoriasBean extends BasePageBean{
@@ -133,7 +132,7 @@ public class CategoriasBean extends BasePageBean{
         }
     }
 
-    public void actualizarCategoria(String nombreCategoria, String nombre, String descripcion, String estado) throws SolidaridadException {
+    public void actualizarCategoria(String nombreCategoria, String nombre, String descripcion, String estado) throws SolidaridadException, PSQLException {
         try{
             categoriasService.actualizarCategoria(nombreCategoria,nombre,descripcion,estado);
         }catch (Exception e){

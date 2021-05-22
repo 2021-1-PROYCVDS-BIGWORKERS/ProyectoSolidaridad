@@ -5,6 +5,7 @@ import edu.eci.cvds.sampleprj.dao.CategoriasDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper;
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.SolidaridadException;
+import org.postgresql.util.PSQLException;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
         try{
             categoriaMapper.insertarCategoria(categoria);
         }catch (Exception e){
-            e.printStackTrace();
+            throw new SolidaridadException("Error al insertar la categoria ",e);
         }
     }
 
@@ -26,12 +27,12 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
         try{
             return categoriaMapper.consultarCategorias();
         }catch (Exception e){
-            throw new SolidaridadException("Error al consultar los clientes MyBatisCategorias ",e);
+            throw new SolidaridadException("Error al consultar las categorias ",e);
         }
     }
 
     @Override
-    public void update(Categoria categoria, String nombre, String descripcion, String estado) throws SolidaridadException {
+    public void update(Categoria categoria, String nombre, String descripcion, String estado) throws SolidaridadException, PSQLException {
         try{
             String aNombre = categoria.getNombre();
             if (nombre != null){
@@ -46,7 +47,6 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
             categoriaMapper.update(categoria,aNombre);
 
         }catch (Exception e){
-            e.printStackTrace();
             throw new SolidaridadException("Error al actualizar la categoria "+nombre);
         }
     }
@@ -56,7 +56,6 @@ public class MyBatisCategoriasDAO implements CategoriasDAO {
         try{
             return categoriaMapper.consultarCategoria(nombre);
         }catch (Exception e){
-            e.printStackTrace();
             throw new SolidaridadException("La categoria consultada no existe");
         }
     }
