@@ -9,6 +9,14 @@
 </h:head>
 
 <h:body>
+    <h:form>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <p:commandButton actionListener="#{login.logOut}" value="salir" >
+            </p:commandButton>
+            
+        </h:form>
     <h:form id="Respuesta_form">
         <p:dataTable var="respuesta" value="#{RespuestasBean.consultarRespuestas()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
