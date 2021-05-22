@@ -3,11 +3,13 @@ package edu.eci.cvds.view;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import com.google.inject.Inject;
-import edu.eci.cvds.samples.entities.Necesidad;
-import edu.eci.cvds.samples.services.NecesidadesService;
+import edu.eci.cvds.samples.entities.*;
+import edu.eci.cvds.samples.services.*;
 import edu.eci.cvds.samples.services.SolidaridadException;
 import org.primefaces.model.chart.*;
 import javax.annotation.PostConstruct;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,6 +19,11 @@ public class NecesidadesBean extends BasePageBean{
     @Inject
     private NecesidadesService NecesidadesService;
     private PieChartModel pieModel;
+
+    @Inject
+    private UsuariosService usuariosService;
+    private Usuario user;
+
 
     @PostConstruct
     public void init() {
@@ -58,7 +65,23 @@ public class NecesidadesBean extends BasePageBean{
 
     public void registrarNecesidad( String nombre, String descripcion, String idCategoria, String urgencia, String nickname){
         try{
-            NecesidadesService.registrarNecesidad(new Necesidad(nombre, descripcion,idCategoria,urgencia,nickname));
+            Subject subject = SecurityUtils.getSubject();
+            String dato = (String) subject.getSession().getAttribute("correo");
+            System.out.println(dato);            
+            user = usuariosService.consultarUsuario(dato);
+            String realnick =user.getNickname();
+            Integer veces =0;
+            for (Necesidad i: NecesidadesService.consultarNecesidades()){
+                if (i.getNickname().equals(realnick)){
+                    veces = veces +1  ;
+                }
+            }
+            if( veces<6){
+                NecesidadesService.registrarNecesidad(new Necesidad(nombre, descripcion,idCategoria,urgencia,realnick));
+            }else{
+                throw new SolidaridadException("No puedes insertar mas");
+            }
+            
         }catch (Exception e){
             e.printStackTrace();
         }

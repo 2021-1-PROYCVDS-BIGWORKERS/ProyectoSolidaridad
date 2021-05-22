@@ -3,10 +3,14 @@ package edu.eci.cvds.view;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import com.google.inject.Inject;
-import edu.eci.cvds.samples.entities.Oferta;
+import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.services.OfertasService;
 import edu.eci.cvds.samples.services.SolidaridadException;
+import edu.eci.cvds.samples.services.UsuariosService;
+
 import org.primefaces.model.chart.*;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.*;
 import javax.annotation.PostConstruct;
 
 import java.sql.Date;
@@ -17,8 +21,14 @@ import java.util.List;
 public class OfertasBean extends BasePageBean{
     @Inject
     private OfertasService ofertasService;
-    private PieChartModel pieModel;
 
+    @Inject
+    private UsuariosService usuariosService;
+
+    private PieChartModel pieModel;
+    
+    private Usuario user;
+    
     @PostConstruct
     public void init() {
         super.init();
@@ -65,7 +75,23 @@ public class OfertasBean extends BasePageBean{
 
     public void registrarOferta(String idCategoria, String nombre, String descripcion,String estado,String nickname) {
         try {
-            ofertasService.registrarOferta(new Oferta(idCategoria,nombre, descripcion,estado,nickname));
+            Subject subject = SecurityUtils.getSubject();
+            String dato = (String) subject.getSession().getAttribute("correo");
+            System.out.println(dato);            
+            user = usuariosService.consultarUsuario(dato);
+            String realnick =user.getNickname();
+            Integer veces =0;
+            for (Oferta i: ofertasService.consultarOfertas()){
+                if (i.getNickname().equals(realnick)){
+                    veces = veces +1  ;
+                }
+            }
+            if( veces<7){
+                ofertasService.registrarOferta(new Oferta(idCategoria,nombre, descripcion,estado,realnick));
+            }else{
+                throw new SolidaridadException("No puedes insertar mas");
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -85,10 +85,9 @@ public class CategoriasBean extends BasePageBean{
 
         try{
            // CategoriasInvalidasService categoriasInvalidasService = SolidaridadFactory.getInstance().getCategoriasInvalidasService();
-            System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
+
             boolean valido = true;
             for (CategoriaInvalida i: categoriasInvalidasService.consultarCategoriasInvalidas()){
-                System.out.println(i.getPalabra()+" "+nombre);
                 if (i.getPalabra().contains(nombre)){
                     valido =false ;
                     break;   
