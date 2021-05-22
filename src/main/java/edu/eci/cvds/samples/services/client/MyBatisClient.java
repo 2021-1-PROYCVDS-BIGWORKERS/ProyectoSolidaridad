@@ -14,17 +14,20 @@ import java.time.LocalDate;
 public class MyBatisClient {
     public static void main(String[] args) throws SolidaridadException, PSQLException {
 
-        CategoriasService categoriasService = SolidaridadFactory.getInstance().getCategoriasService();
-        CategoriasInvalidasService categoriasInvalidasService =SolidaridadFactory.getInstance().getCategoriasInvalidasService();
+        //CategoriasService categoriasService = SolidaridadFactory.getInstance().getCategoriasService();
+        //CategoriasInvalidasService categoriasInvalidasService =SolidaridadFactory.getInstance().getCategoriasInvalidasService();
+        UsuariosService usuariosservice = SolidaridadFactory.getInstance().getUsuariosService();
         //categoriasService.registrarCategoria(new Categoria("pez","Estudiar l"));
 
         System.out.println("--------------------------------------------");
+        Usuario user = usuariosservice.consultarUsuario("meggleson0@wufoo.com");
+        System.out.println(user.getNickname());
         //System.out.println(categoriasService.consultarCategorias());
-        System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
+        //System.out.println(categoriasInvalidasService.consultarCategoriasInvalidas());
         System.out.println("--------------------------------------------");
 
         //System.out.println(categoriasService.consultarCategoria("pez"));
-        System.out.println(categoriasInvalidasService.consultarCategoriaInvalida("pez"));
+        //System.out.println(categoriasInvalidasService.consultarCategoriaInvalida("pez"));
         //categoriasService.actualizarCategoria("Greg",null,null,"En proceso");
         //NecesidadesService necesidadesService = SolidaridadFactory.getInstance().getNecesidadesService();
         //RespuestasService respuestasService = SolidaridadFactory.getInstance().getRespuestasService();
