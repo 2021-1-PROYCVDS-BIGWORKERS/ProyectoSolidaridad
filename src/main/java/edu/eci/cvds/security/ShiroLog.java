@@ -40,7 +40,7 @@ public class ShiroLog implements Log {
     public void logout()throws SolidaridadException {
         SecurityUtils.getSubject().logout();
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/login.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
         } catch (IOException ioException) {
             ioException.printStackTrace();
             throw new SolidaridadException("Woops, ha ocurrido un error",ioException);
